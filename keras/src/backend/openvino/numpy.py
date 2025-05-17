@@ -1330,7 +1330,9 @@ def split(x, indices_or_sections, axis=0):
 
 
 def stack(x, axis=0):
-    assert isinstance(x, list), "`stack` is supported only for `x` list"
+    if isinstance(x, tuple):
+        x = list(x)
+    assert isinstance(x, list), "`stack` supportes only `x` list or tuple"
     elems = []
     const_axis = ov_opset.constant(axis, Type.i32).output(0)
     for elem in x:
