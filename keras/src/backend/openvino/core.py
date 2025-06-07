@@ -886,9 +886,64 @@ def while_loop(
     loop_vars,
     maximum_iterations=None,
 ):
-    raise NotImplementedError(
-        "`while_loop` is not supported with openvino backend"
+    is_scalar_input = _is_scalar(loop_vars)
+
+    if is_scalar_input:
+        loop_vars = (loop_vars,)
+    elif isinstance(loop_vars, (list, np.ndarray)):
+        loop_vars = tuple(loop_vars)
+    assert isinstance(loop_vars, tuple), (
+        f"Unsupported type {type(loop_vars)} for loop_vars"
     )
+
+    loop_vars_ov = tuple(
+        ov_opset.convert(get_ov_output(var), Type.i64).output(0)
+        if get_ov_output(var).get_element_type() == Type.i32
+        else get_ov_output(var)
+        for var in loop_vars
+    )
+
+    maximum_iterations = (
+        ov_opset.constant(-1, Type.i32).output(0)
+        if maximum_iterations is None
+        else get_ov_output(maximum_iterations)
+    )
+
+    trip_count = maximum_iterations
+    execution_condition = ov_opset.constant(True, Type.boolean).output(0)
+    loop = ov_opset.loop(trip_count, execution_condition)
+
+    shapes = [var.get_partial_shape() for var in loop_vars_ov]
+    types = [var.get_element_type() for var in loop_vars_ov]
+    params = [
+        ov_opset.parameter(shape, dtype) for shape, dtype in zip(shapes, types)
+    ]
+
+    body_out = body(*params)
+    if not isinstance(body_out, (list, tuple)):
+        body_out = (body_out,)
+
+    cond_output = cond(*body_out)
+
+    results = [get_ov_output(cond_output)] + [get_ov_output(x) for x in body_out]
+    body_func = Model(results=results, parameters=params)
+
+    loop.set_function(body_func)
+
+    loop.set_special_body_ports([0, 0])
+
+    for param, init_val, next_val in zip(params, loop_vars_ov, body_out):
+        loop.set_merged_input(param, init_val, get_ov_output(next_val))
+
+    outputs = tuple(
+        OpenVINOKerasTensor(loop.get_iter_value(get_ov_output(val)))
+        for val in body_out
+    )
+
+    if is_scalar_input:
+        return outputs[0]
+    else:
+        return outputs
 
 
 def fori_loop(lower, upper, body_fun, init_val):
