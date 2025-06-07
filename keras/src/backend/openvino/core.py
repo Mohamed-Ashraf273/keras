@@ -808,22 +808,6 @@ def slice(inputs, start_indices, shape):
 
 def slice_update(inputs, start_indices, updates):
     inputs = get_ov_output(inputs)
-    if isinstance(start_indices, (list, np.ndarray)):
-        if isinstance(start_indices, np.ndarray):
-            start_indices = start_indices.tolist()
-        start_indices = tuple(start_indices)
-    if isinstance(updates, (list, np.ndarray)):
-        if isinstance(updates, np.ndarray):
-            updates = updates.tolist()
-        updates = tuple(updates)
-    assert isinstance(start_indices, tuple), (
-        "`slice` is not supported by openvino backend"
-        " for `start_indices` of type {}".format(type(start_indices))
-    )
-    assert isinstance(updates, tuple), (
-        "`slice` is not supported by openvino backend"
-        " for `updates` of type {}".format(type(updates))
-    )
     processed_start_indices = []
     for idx in start_indices:
         val = get_ov_output(idx)
