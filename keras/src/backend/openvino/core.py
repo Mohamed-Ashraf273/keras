@@ -892,9 +892,22 @@ def while_loop(
     loop_vars,
     maximum_iterations=None,
 ):
-    raise NotImplementedError(
-        "`while_loop` is not supported with openvino backend"
+    loop_vars_ov = [convert_to_tensor(var) for var in loop_vars]
+    assert maximum_iterations is not None, (
+        '"maximum_iterations = None" is not supported by OpenVINO backend'
     )
+    if isinstance(maximum_iterations, OpenVINOKerasTensor):
+        maximum_iterations = convert_to_numpy(maximum_iterations)
+
+    # cond_result = cond(*loop_vars_ov)
+    # cond_bool = get_ov_output(cond_result)
+    i = 0
+    while i < maximum_iterations:
+        loop_vars_ov = body(*loop_vars_ov)
+        # cond_result = cond(*loop_vars_ov)
+        # cond_bool = get_ov_output(cond_result)
+        i += 1
+    return loop_vars_ov
 
 
 def fori_loop(lower, upper, body_fun, init_val):
