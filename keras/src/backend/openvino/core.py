@@ -927,11 +927,15 @@ def while_loop(
     if not isinstance(body_out, (list, tuple)):
         body_out = (body_out,)
 
-    cond_output = cond(*body_out)
+    cond_output = get_ov_output(cond(*body_out))
 
-    results = [get_ov_output(cond_output)] + [
-        get_ov_output(x) for x in body_out
-    ]
+    if len(cond_output.get_partial_shape()) != 0:
+        raise ValueError(
+            "`cond` function must return a scalar boolean value, "
+            "but got shape {}".format(cond_output.get_partial_shape())
+        )
+
+    results = [cond_output] + [get_ov_output(x) for x in body_out]
 
     body_func = Model(results=results, parameters=params)
     loop.set_function(body_func)
