@@ -892,22 +892,63 @@ def while_loop(
     loop_vars,
     maximum_iterations=None,
 ):
-    loop_vars_ov = [convert_to_tensor(var) for var in loop_vars]
-    assert maximum_iterations is not None, (
-        '"maximum_iterations = None" is not supported by OpenVINO backend'
-    )
-    if isinstance(maximum_iterations, OpenVINOKerasTensor):
-        maximum_iterations = convert_to_numpy(maximum_iterations)
+    is_scalar_input = _is_scalar(loop_vars)
 
-    # cond_result = cond(*loop_vars_ov)
-    # cond_bool = get_ov_output(cond_result)
-    i = 0
-    while i < maximum_iterations:
-        loop_vars_ov = body(*loop_vars_ov)
-        # cond_result = cond(*loop_vars_ov)
-        # cond_bool = get_ov_output(cond_result)
-        i += 1
-    return loop_vars_ov
+    if is_scalar_input:
+        loop_vars = (loop_vars,)
+    if isinstance(loop_vars, (list, np.ndarray)):
+        loop_vars = tuple(loop_vars)
+    assert isinstance(loop_vars, tuple), (
+        f"Unsupported type {type(loop_vars)} for loop_vars"
+    )
+
+    maximum_iterations = (
+        ov_opset.constant(-1, Type.i32).output(0)
+        if maximum_iterations is None
+        else get_ov_output(maximum_iterations)
+    )
+
+    trip_count = maximum_iterations
+    execution_condition = ov_opset.constant(True, Type.boolean).output(0)
+    loop = ov_opset.loop(trip_count, execution_condition)
+
+    loop_vars_ov = [get_ov_output(var) for var in loop_vars]
+
+    shapes = [var.get_partial_shape() for var in loop_vars_ov]
+    types = [var.get_element_type() for var in loop_vars_ov]
+    params = [
+        ov_opset.parameter(shape, dtype) for shape, dtype in zip(shapes, types)
+    ]
+
+    param_tensors = [OpenVINOKerasTensor(p.output(0)) for p in params]
+
+    body_out = body(*param_tensors)
+
+    if not isinstance(body_out, (list, tuple)):
+        body_out = (body_out,)
+
+    cond_output = cond(*body_out)
+
+    results = [get_ov_output(cond_output)] + [
+        get_ov_output(x) for x in body_out
+    ]
+
+    body_func = Model(results=results, parameters=params)
+    loop.set_function(body_func)
+    loop.set_special_body_ports([0, 0])
+
+    for param, init_val, next_val in zip(params, loop_vars_ov, body_out):
+        loop.set_merged_input(param, init_val, get_ov_output(next_val))
+
+    outputs = tuple(
+        OpenVINOKerasTensor(loop.get_iter_value(get_ov_output(val)))
+        for val in body_out
+    )
+
+    if is_scalar_input:
+        return outputs[0]
+    else:
+        return outputs
 
 
 def fori_loop(lower, upper, body_fun, init_val):
