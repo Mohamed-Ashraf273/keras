@@ -925,10 +925,8 @@ def while_loop(
         loop_vars = (loop_vars,)
     elif isinstance(loop_vars, (list, np.ndarray)):
         loop_vars = tuple(loop_vars)
-    elif isinstance(loop_vars, dict):
-        pass
     else:
-        assert isinstance(loop_vars, tuple), (
+        assert isinstance(loop_vars, (tuple, dict)), (
             f"Unsupported type {type(loop_vars)} for loop_vars"
         )
 
