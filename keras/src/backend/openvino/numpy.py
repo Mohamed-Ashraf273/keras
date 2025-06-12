@@ -54,12 +54,41 @@ def einsum(subscripts, *operands, **kwargs):
         # batched matmul with reshape (bsd,kdh->bskh or btd,ndh->btnh)
         if subscripts == "bsd,kdh->bskh" or subscripts == "btd,ndh->btnh":
             a_exp = ov_opset.unsqueeze(
-                a, ov_opset.constant([2], Type.i32).output(0)
+                a, ov_opset.constant([2, 4], Type.i32).output(0)
             ).output(0)
             b_exp = ov_opset.unsqueeze(
-                b, ov_opset.constant([0], Type.i32).output(0)
+                b, ov_opset.constant([0, 1], Type.i32).output(0)
             ).output(0)
-            result = ov_opset.matmul(a_exp, b_exp, False, False).output(0)
+            a_broadcast = ov_opset.broadcast(
+                a_exp,
+                ov_opset.constant(
+                    [
+                        a.shape[0],
+                        a.shape[1],
+                        b.shape[0],
+                        a.shape[2],
+                        b.shape[2],
+                    ],
+                    Type.i32,
+                ).output(0),
+            )
+            b_broadcast = ov_opset.broadcast(
+                b_exp,
+                ov_opset.constant(
+                    [
+                        a.shape[0],
+                        a.shape[1],
+                        b.shape[0],
+                        a.shape[2],
+                        b.shape[2],
+                    ],
+                    Type.i32,
+                ).output(0),
+            )
+            mul = ov_opset.multiply(a_broadcast, b_broadcast)
+            result = ov_opset.reduce_sum(
+                mul, ov_opset.constant([3], Type.i32).output(0)
+            ).output(0)
             return OpenVINOKerasTensor(result)
         # outer product
         if subscripts == "i,j->ij":
