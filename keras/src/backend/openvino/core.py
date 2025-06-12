@@ -536,8 +536,10 @@ def convert_to_numpy(x):
         ov_model = Model(results=[ov_result], parameters=[])
         ov_compiled_model = compile_model(ov_model, get_device())
         result = ov_compiled_model({})[0]
-    except:
-        raise "`convert_to_numpy` cannot convert to numpy"
+    except Exception as e:
+        raise RuntimeError(
+            f"`convert_to_numpy` cannot convert to numpy: {str(e)}"
+        ) from e
     return result
 
 
