@@ -30,6 +30,49 @@ def add(x1, x2):
 
 
 def einsum(subscripts, *operands, **kwargs):
+    # add optimization for einsum by feeding it with some famous subscripts
+    def eval_opt_einsum(subscripts, *operands):
+        if len(operands) != 2:
+            pass
+        a, b = operands
+        a = get_ov_output(a)
+        b = get_ov_output(b)
+        # matrix multiplication
+        if subscripts == "ij,jk->ik":
+            return OpenVINOKerasTensor(
+                ov_opset.matmul(a, b, False, False).output(0)
+            )
+        # batch matmul
+        if subscripts == "bij,bjk->bik":
+            return OpenVINOKerasTensor(
+                ov_opset.matmul(a, b, False, False).output(0)
+            )
+        # dot product
+        if subscripts == "i,i->":
+            mul = ov_opset.multiply(a, b)
+            return OpenVINOKerasTensor(ov_opset.reduce_sum(mul, [0]).output(0))
+        # batched matmul with reshape (bsd,kdh->bskh or btd,ndh->btnh)
+        if subscripts == "bsd,kdh->bskh" or subscripts == "btd,ndh->btnh":
+            a_exp = ov_opset.unsqueeze(
+                a, ov_opset.constant([2], Type.i32).output(0)
+            ).output(0)
+            b_exp = ov_opset.unsqueeze(
+                b, ov_opset.constant([0], Type.i32).output(0)
+            ).output(0)
+            result = ov_opset.matmul(a_exp, b_exp, False, False).output(0)
+            return OpenVINOKerasTensor(result)
+        # outer product
+        if subscripts == "i,j->ij":
+            a_exp = ov_opset.unsqueeze(
+                a, ov_opset.constant([1], Type.i32).output(0)
+            ).output(0)
+            b_exp = ov_opset.unsqueeze(
+                b, ov_opset.constant([0], Type.i32).output(0)
+            ).output(0)
+            result = ov_opset.multiply(a_exp, b_exp)
+            return OpenVINOKerasTensor(result)
+
+    eval_opt_einsum(subscripts, *operands)
     inputs = []
     for operand in operands:
         operand = get_ov_output(operand)
