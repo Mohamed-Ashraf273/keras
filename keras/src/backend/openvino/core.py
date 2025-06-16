@@ -974,6 +974,10 @@ def while_loop(
             "but got shape {}".format(cond_output.get_partial_shape())
         )
 
+    for p, out in zip(params, flat_body_out):
+        out_shape = get_ov_output(out).get_partial_shape()
+        p.set_partial_shape(out_shape)
+
     results = [cond_output] + [get_ov_output(x) for x in flat_body_out]
     body_func = Model(results=results, parameters=params)
     loop.set_function(body_func)
