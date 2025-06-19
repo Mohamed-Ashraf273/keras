@@ -341,7 +341,9 @@ class OpenVINOKerasTensor:
                 raise ValueError(
                     "OpenVINO backend does not support boolean indexing"
                 )
-            elif isinstance(index, int):
+            elif isinstance(index, (int, np.integer)):
+                if isinstance(index, np.integer):
+                    index = int(index)
                 actual_dim = dim - count_unsqueeze_before(dim)
                 if not (0 <= actual_dim < rank):
                     raise IndexError(
