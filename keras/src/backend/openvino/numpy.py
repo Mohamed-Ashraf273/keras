@@ -1607,7 +1607,7 @@ def tril(x, k=0):
     batch_shape = ov_opset.gather(input_shape, batch_indices, axis=0)
     full_mask_shape = ov_opset.concat([batch_shape, M_1d, N_1d], axis=0)
     mask = ov_opset.broadcast(mask, full_mask_shape)
-    mask = ov_opset.convert(mask, ov_type)
+    
     if ov_type == Type.boolean:
         out = ov_opset.logical_and(x, mask)
     else:
@@ -1696,8 +1696,8 @@ def triu(x, k=0):
     batch_shape = ov_opset.gather(input_shape, batch_indices, axis=0)
     full_mask_shape = ov_opset.concat([batch_shape, M_1d, N_1d], axis=0)
     mask = ov_opset.broadcast(mask, full_mask_shape)
-    mask = ov_opset.convert(mask, ov_type)
-    if ov_type == Type.boolean:
+
+    if ov_type.get_type_name() == "boolean":
         out = ov_opset.logical_and(x, mask)
     else:
         out = ov_opset.multiply(x, mask)
