@@ -1484,7 +1484,46 @@ def trace(x, offset=0, axis1=0, axis2=1):
 
 
 def tri(N, M=None, k=0, dtype=None):
-    raise NotImplementedError("`tri` is not supported with openvino backend")
+    if M is None:
+        M = N
+    if dtype is None:
+        dtype = "float32"
+
+    ov_dtype = OPENVINO_DTYPES[dtype]
+
+    N = ov_opset.constant(N, Type.i32)
+    M = ov_opset.constant(M, Type.i32)
+    k = ov_opset.constant(k, Type.i32)
+
+    row_range = ov_opset.range(
+        ov_opset.constant(0, Type.i32),
+        N,
+        ov_opset.constant(1, Type.i32),
+        output_type=Type.i32,
+    )
+    col_range = ov_opset.range(
+        ov_opset.constant(0, Type.i32),
+        M,
+        ov_opset.constant(1, Type.i32),
+        output_type=Type.i32,
+    )
+
+    row_idx = ov_opset.unsqueeze(row_range, ov_opset.constant([1], Type.i32))
+    col_idx = ov_opset.unsqueeze(col_range, ov_opset.constant([0], Type.i32))
+
+    target_shape = ov_opset.concat([ov_opset.unsqueeze(N, [0]), ov_opset.unsqueeze(M, [0])], axis=0)
+
+    row_idx = ov_opset.broadcast(row_idx, target_shape)
+    col_idx = ov_opset.broadcast(col_idx, target_shape)
+
+    mask = ov_opset.less_equal(col_idx, ov_opset.add(row_idx, k))
+
+    if ov_dtype == Type.boolean:
+        result = mask
+    else:
+        result = ov_opset.convert(mask, ov_dtype)
+
+    return OpenVINOKerasTensor(result.output(0))
 
 
 def tril(x, k=0):
