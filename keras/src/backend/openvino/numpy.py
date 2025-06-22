@@ -1568,10 +1568,12 @@ def tril(x, k=0):
     batch_shape = ov_opset.gather(input_shape, batch_indices, axis=0)
     full_mask_shape = ov_opset.concat([batch_shape, M_1d, N_1d], axis=0)
     mask = ov_opset.broadcast(mask, full_mask_shape)
+    mask = ov_opset.convert(mask, ov_type)
     if ov_type == Type.boolean:
-        mask = ov_opset.convert(mask, Type.f32)
-        x = ov_opset.convert(x, Type.f32)
-    return OpenVINOKerasTensor(ov_opset.multiply(x, mask).output(0))
+        out = ov_opset.logical_and(x, mask)
+    else:
+        out = ov_opset.multiply(x, mask)
+    return OpenVINOKerasTensor(out.output(0))
 
 
 def triu(x, k=0):
@@ -1655,10 +1657,12 @@ def triu(x, k=0):
     batch_shape = ov_opset.gather(input_shape, batch_indices, axis=0)
     full_mask_shape = ov_opset.concat([batch_shape, M_1d, N_1d], axis=0)
     mask = ov_opset.broadcast(mask, full_mask_shape)
+    mask = ov_opset.convert(mask, ov_type)
     if ov_type == Type.boolean:
-        mask = ov_opset.convert(mask, Type.f32)
-        x = ov_opset.convert(x, Type.f32)
-    return OpenVINOKerasTensor(ov_opset.multiply(x, mask).output(0))
+        out = ov_opset.logical_and(x, mask)
+    else:
+        out = ov_opset.multiply(x, mask)
+    return OpenVINOKerasTensor(out.output(0))
 
 
 def vdot(x1, x2):
