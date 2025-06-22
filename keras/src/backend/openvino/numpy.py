@@ -1511,7 +1511,9 @@ def tri(N, M=None, k=0, dtype=None):
     row_idx = ov_opset.unsqueeze(row_range, ov_opset.constant([1], Type.i32))
     col_idx = ov_opset.unsqueeze(col_range, ov_opset.constant([0], Type.i32))
 
-    target_shape = ov_opset.concat([ov_opset.unsqueeze(N, [0]), ov_opset.unsqueeze(M, [0])], axis=0)
+    target_shape = ov_opset.concat(
+        [ov_opset.unsqueeze(N, [0]), ov_opset.unsqueeze(M, [0])], axis=0
+    )
 
     row_idx = ov_opset.broadcast(row_idx, target_shape)
     col_idx = ov_opset.broadcast(col_idx, target_shape)
@@ -1607,7 +1609,7 @@ def tril(x, k=0):
     batch_shape = ov_opset.gather(input_shape, batch_indices, axis=0)
     full_mask_shape = ov_opset.concat([batch_shape, M_1d, N_1d], axis=0)
     mask = ov_opset.broadcast(mask, full_mask_shape)
-    
+
     if ov_type == Type.boolean:
         out = ov_opset.logical_and(x, mask)
     else:
