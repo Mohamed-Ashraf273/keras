@@ -4,7 +4,7 @@ import warnings
 
 import numpy as np
 import openvino as ov
-import openvino.runtime.opset15 as ov_opset
+import openvino.runtime.opset14 as ov_opset
 from openvino import Model
 from openvino import Tensor
 from openvino import compile_model
@@ -825,31 +825,21 @@ def slice(inputs, start_indices, shape):
 
 
 def slice_update(inputs, start_indices, updates):
+    inputs = get_ov_output(inputs)
     if isinstance(start_indices, (list, np.ndarray)):
         start_indices = tuple(start_indices)
     assert isinstance(start_indices, tuple), (
         "`slice_update` is not supported by openvino backend"
         " for `start_indices` of type {}".format(type(start_indices))
     )
-
-    inputs = get_ov_output(inputs)
-    updates = get_ov_output(updates)
-    
-    assert len(start_indices) == len(updates.get_partial_shape()), (
-        "Rank of updates must match length of start_indices"
-    )
-
-    axes = []
-    starts = []
-    stops = []
-
-    def prepare_index(val):
-        val = get_ov_output(val)
+    processed_start_indices = []
+    for idx in start_indices:
+        val = get_ov_output(idx)
         val_type = val.get_element_type()
         if not val_type.is_integral():
             raise ValueError(
-                "`slice_update` is not supported by OpenVINO backend "
-                "for `start_indices` with non-integer types"
+                "`slice` is not supported by OpenVINO backend "
+                "for `start_indices` or `shape` with non-integer types"
             )
         if val_type != Type.i32:
             val = ov_opset.convert(val, Type.i32).output(0)
@@ -857,26 +847,60 @@ def slice_update(inputs, start_indices, updates):
             val = ov_opset.unsqueeze(
                 val, ov_opset.constant(0, Type.i32)
             ).output(0)
-        return val
+        processed_start_indices.append(val)
+    start_indices_tensor = ov_opset.concat(processed_start_indices, axis=0)
 
-    for idx, dim in enumerate(updates.shape):
-        axes.append(idx)
+    rank = len(updates.shape)
+    ranges = []
+    for dim in updates.shape:
+        r = ov_opset.range(
+            ov_opset.constant(0, Type.i32),
+            ov_opset.constant(dim, Type.i32),
+            ov_opset.constant(1, Type.i32),
+            output_type=Type.i32,
+        )
+        ranges.append(r)
 
-        start_val = prepare_index(start_indices[idx])
-        stop_val = prepare_index(start_indices[idx] + dim)
+    broadcasted_ranges = []
+    for i, r in enumerate(ranges):
+        shape = [1] * rank
+        shape[i] = updates.shape[i]
+        r_reshaped = ov_opset.reshape(
+            r, ov_opset.constant(shape, Type.i32), special_zero=False
+        ).output(0)
+        target_shape = ov_opset.constant(list(updates.shape), Type.i32)
+        r_broadcasted = ov_opset.broadcast(r_reshaped, target_shape).output(0)
+        broadcasted_ranges.append(r_broadcasted)
 
-        starts.append(start_val)
-        stops.append(stop_val)
+    indices_stack = ov_opset.concat(broadcasted_ranges, axis=0).output(0)
 
-    axes_tensor = ov_opset.constant(axes, dtype=Type.i32).output(0)
-    starts_tensor = ov_opset.concat(starts, axis=0).output(0)
-    stops_tensor = ov_opset.concat(stops, axis=0).output(0)
-    steps_tensor = ov_opset.constant([1] * len(axes), dtype=Type.i32).output(0)
-
-    updated = ov_opset.slice_scatter(
-        inputs, updates, starts_tensor, stops_tensor, steps_tensor, axes_tensor
+    num_updates = 1
+    for dim in updates.shape:
+        num_updates *= dim
+    new_shape = ov_opset.constant([rank, num_updates], Type.i32)
+    indices_reshaped = ov_opset.reshape(
+        indices_stack, new_shape, special_zero=False
+    ).output(0)
+    absolute_indices = ov_opset.transpose(
+        indices_reshaped, ov_opset.constant([1, 0], Type.i32)
     ).output(0)
 
+    start_indices_expanded = ov_opset.broadcast(
+        start_indices_tensor, ov_opset.constant([num_updates, rank], Type.i32)
+    ).output(0)
+    absolute_indices = ov_opset.add(
+        absolute_indices, start_indices_expanded
+    ).output(0)
+
+    updates_tensor = get_ov_output(updates)
+    updates_flat = ov_opset.reshape(
+        updates_tensor,
+        ov_opset.constant([num_updates], Type.i32),
+        special_zero=False,
+    ).output(0)
+    updated = ov_opset.scatter_nd_update(
+        inputs, absolute_indices, updates_flat
+    ).output(0)
     return OpenVINOKerasTensor(updated)
 
 
