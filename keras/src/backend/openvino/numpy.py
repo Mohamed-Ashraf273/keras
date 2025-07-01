@@ -1548,100 +1548,56 @@ def take_along_axis(x, indices, axis=None):
     x_shape = ov_opset.shape_of(x, Type.i32).output(0)
     indices_shape = ov_opset.shape_of(indices, Type.i32).output(0)
 
-    # fix negative indices by adding dimension size
-    axis_index = ov_opset.constant([axis], dtype=Type.i32).output(0)
     zero_const = ov_opset.constant(0, dtype=Type.i32).output(0)
-    dim_size = ov_opset.gather(x_shape, axis_index, zero_const).output(0)
-    dim_size = ov_opset.squeeze(dim_size, zero_const).output(0)
+    axis_index = ov_opset.constant([axis], dtype=Type.i32).output(0)
 
+    # Fix negative indices
+    dim_size = ov_opset.squeeze(
+        ov_opset.gather(x_shape, axis_index, zero_const).output(0), zero_const
+    ).output(0)
     zero_scalar = ov_opset.constant(0, indices.get_element_type()).output(0)
     is_neg = ov_opset.less(indices, zero_scalar).output(0)
     dim_size_cast = ov_opset.convert(
         dim_size, indices.get_element_type()
     ).output(0)
-    adjusted_indices = ov_opset.add(indices, dim_size_cast).output(0)
-    indices = ov_opset.select(is_neg, adjusted_indices, indices).output(0)
-
+    indices = ov_opset.select(
+        is_neg, ov_opset.add(indices, dim_size_cast).output(0), indices
+    ).output(0)
     indices = ov_opset.convert(indices, Type.i32).output(0)
 
-    one_const = ov_opset.constant(1, dtype=Type.i32).output(0)
-
-    # Create modified shapes with axis dimension set to 1
-    x_shape_modified = []
-    indices_shape_modified = []
+    x_target_parts, indices_target_parts = [], []
 
     for i in range(x_rank):
-        dim_index = ov_opset.constant([i], dtype=Type.i32).output(0)
-        if i == axis:
-            x_shape_modified.append(
-                ov_opset.unsqueeze(one_const, zero_const).output(0)
-            )
-            indices_shape_modified.append(
-                ov_opset.unsqueeze(one_const, zero_const).output(0)
-            )
-        else:
-            x_dim = ov_opset.gather(x_shape, dim_index, zero_const).output(0)
-            indices_dim = ov_opset.gather(
-                indices_shape, dim_index, zero_const
-            ).output(0)
-            x_shape_modified.append(x_dim)
-            indices_shape_modified.append(indices_dim)
+        dim_idx = ov_opset.constant([i], dtype=Type.i32).output(0)
+        x_dim = ov_opset.gather(x_shape, dim_idx, zero_const).output(0)
+        indices_dim = ov_opset.gather(
+            indices_shape, dim_idx, zero_const
+        ).output(0)
 
-    x_shape_mod = ov_opset.concat(x_shape_modified, axis=0).output(0)
-    indices_shape_mod = ov_opset.concat(indices_shape_modified, axis=0).output(
+        if i == axis:
+            # For axis dimension: keep original dimensions
+            x_target_parts.append(x_dim)
+            indices_target_parts.append(indices_dim)
+        else:
+            # For other dimensions: use maximum for broadcasting
+            max_dim = ov_opset.maximum(x_dim, indices_dim).output(0)
+            x_target_parts.append(max_dim)
+            indices_target_parts.append(max_dim)
+
+    x_target_shape = ov_opset.concat(x_target_parts, axis=0).output(0)
+    indices_target_shape = ov_opset.concat(indices_target_parts, axis=0).output(
         0
     )
 
-    # Compute broadcast shape (maximum of each dimension)
-    broadcast_shape_parts = []
-    for i in range(x_rank):
-        dim_index = ov_opset.constant([i], dtype=Type.i32).output(0)
-        x_dim = ov_opset.gather(x_shape_mod, dim_index, zero_const).output(0)
-        indices_dim = ov_opset.gather(
-            indices_shape_mod, dim_index, zero_const
-        ).output(0)
-        max_dim = ov_opset.maximum(x_dim, indices_dim).output(0)
-        broadcast_shape_parts.append(max_dim)
-
-    broadcast_shape = ov_opset.concat(broadcast_shape_parts, axis=0).output(0)
-
-    # Create target shapes: broadcast shape but with original axis dimensions
-    x_target_shape_parts = []
-    indices_target_shape_parts = []
-
-    for i in range(x_rank):
-        dim_index = ov_opset.constant([i], dtype=Type.i32).output(0)
-        if i == axis:
-            x_orig_dim = ov_opset.gather(x_shape, dim_index, zero_const).output(
-                0
-            )
-            indices_orig_dim = ov_opset.gather(
-                indices_shape, dim_index, zero_const
-            ).output(0)
-            x_target_shape_parts.append(x_orig_dim)
-            indices_target_shape_parts.append(indices_orig_dim)
-        else:
-            broadcast_dim = ov_opset.gather(
-                broadcast_shape, dim_index, zero_const
-            ).output(0)
-            x_target_shape_parts.append(broadcast_dim)
-            indices_target_shape_parts.append(broadcast_dim)
-
-    x_target_shape = ov_opset.concat(x_target_shape_parts, axis=0).output(0)
-    indices_target_shape = ov_opset.concat(
-        indices_target_shape_parts, axis=0
-    ).output(0)
-
-    # Broadcast to target shapes
+    # Broadcast to target shapes and gather elements
     x_broadcasted = ov_opset.broadcast(x, x_target_shape).output(0)
     indices_broadcasted = ov_opset.broadcast(
         indices, indices_target_shape
     ).output(0)
-
-    # Use gather_elements for element-wise selection
     result = ov_opset.gather_elements(
         x_broadcasted, indices_broadcasted, axis
     ).output(0)
+
     return OpenVINOKerasTensor(result)
 
 
