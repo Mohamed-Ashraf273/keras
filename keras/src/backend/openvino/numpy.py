@@ -1339,34 +1339,41 @@ def repeat(x, repeats, axis=None):
         ).output(0)
         return OpenVINOKerasTensor(result)
 
-    repeats_np = np.array(repeats)
-    if repeats_np.ndim != 1:
-        raise NotImplementedError("Only 1D repeats arrays are supported.")
-    input_shape = ov_opset.shape_of(x, Type.i32).output(0)
+    repeats_tensor = get_ov_output(repeats)
+    input_shape = ov_opset.shape_of(x, Type.i32)
     axis_len = ov_opset.gather(
         input_shape,
         ov_opset.constant([axis], Type.i32),
         ov_opset.constant(0, Type.i32),
-    ).output(0)
-    axis_len_val = (
-        int(axis_len.get_vector()[0])
-        if hasattr(axis_len, "get_vector")
-        else x.get_partial_shape()[axis]
     )
-    if axis_len_val != len(repeats_np):
-        raise ValueError("repeats length does not match axis length")
+    axis_len = ov_opset.squeeze(axis_len, ov_opset.constant([0], Type.i32))
 
-    gather_indices = np.concatenate(
-        [
-            np.full(r, i, dtype=np.int32)
-            for i, r in enumerate(repeats_np)
-            if r > 0
-        ]
+    # cumsum and total output length
+    cumsum = ov_opset.cumsum(repeats_tensor, ov_opset.constant(0, Type.i32))
+    total = ov_opset.reduce_sum(repeats_tensor, ov_opset.constant([0], Type.i32), keep_dims=False)
+    total = ov_opset.convert(total, Type.i32)
+
+    # Build output indices [0, 1, ..., total-1]
+    out_indices = ov_opset.range(
+        ov_opset.constant(0, Type.i32),
+        total,
+        ov_opset.constant(1, Type.i32),
+        output_type=Type.i32
     )
-    gather_indices_ov = ov_opset.constant(gather_indices, Type.i32).output(0)
-    result = ov_opset.gather(
-        x, gather_indices_ov, ov_opset.constant(axis, Type.i32)
-    ).output(0)
+
+    # For each out_index, find which interval it falls in (searchsorted)
+    # Equivalent to: sum(out_indices >= cumsum) for each out_index
+    cumsum_unsq = ov_opset.unsqueeze(cumsum, ov_opset.constant([0], Type.i32))
+    out_indices_unsq = ov_opset.unsqueeze(out_indices, ov_opset.constant([1], Type.i32))
+    cumsum_unsq = ov_opset.convert(cumsum_unsq, Type.i32)
+    mask = ov_opset.greater_equal(out_indices_unsq, cumsum_unsq)
+    gather_indices = ov_opset.reduce_sum(
+        ov_opset.convert(mask, Type.i32),
+        ov_opset.constant([1], Type.i32),
+        keep_dims=False
+    )
+
+    result = ov_opset.gather(x, gather_indices, ov_opset.constant(axis, Type.i32)).output(0)
     return OpenVINOKerasTensor(result)
 
 
