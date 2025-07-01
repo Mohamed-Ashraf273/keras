@@ -40,63 +40,61 @@ def uniform(shape, minval=0.0, maxval=1.0, dtype=None, seed=None):
 
 
 def categorical(logits, num_samples, dtype="int64", seed=None):
-    def get_shape_dims(x):
-        shape = ov_opset.shape_of(x, Type.i32)
-        rank_tensor = ov_opset.shape_of(shape, Type.i32)
-        rank_scalar = ov_opset.squeeze(
-            rank_tensor, ov_opset.constant([0], Type.i32)
-        )
-        indices = ov_opset.range(
-            ov_opset.constant(0, Type.i32),
-            rank_scalar,
-            ov_opset.constant(1, Type.i32),
-            output_type=Type.i32,
-        )
-        return ov_opset.gather(shape, indices, axis=0)
-
     dtype = dtype or "int64"
     ov_dtype = OPENVINO_DTYPES[dtype]
     logits = get_ov_output(logits)
-    probs = ov_opset.softmax(logits, axis=-1)
-    cumsum_probs = ov_opset.cumsum(probs, ov_opset.constant(-1, dtype="int32"))
-    shape = get_shape_dims(logits)
-    rank_tensor = ov_opset.shape_of(shape, Type.i32)
-    rank = ov_opset.squeeze(rank_tensor, ov_opset.constant([0], dtype=Type.i32))
-    rank_minus_1 = ov_opset.subtract(rank, ov_opset.constant(1, dtype=Type.i32))
-    indices = ov_opset.range(
-        ov_opset.constant(0, dtype=Type.i32),
-        rank_minus_1,
-        ov_opset.constant(1, dtype=Type.i32),
-        output_type=Type.i32,
-    )
-    batch_shape = ov_opset.gather(shape, indices, axis=0)
+
+    zero_const = ov_opset.constant(0, Type.i32).output(0)
+    one_const = ov_opset.constant(1, Type.i32).output(0)
+    neg_one_const = ov_opset.constant(-1, Type.i32).output(0)
+
+    # Compute probabilities and cumulative sum
+    probs = ov_opset.softmax(logits, axis=-1).output(0)
+    cumsum_probs = ov_opset.cumsum(probs, neg_one_const).output(0)
+
+    # Get shape and compute batch dimensions efficiently
+    logits_shape = ov_opset.shape_of(logits, Type.i32).output(0)
+    rank = ov_opset.shape_of(logits_shape, Type.i32).output(0)
+    rank_scalar = ov_opset.squeeze(rank, zero_const).output(0)
+    rank_minus_1 = ov_opset.subtract(rank_scalar, one_const).output(0)
+
+    # Extract batch shape (all dimensions except last)
+    batch_indices = ov_opset.range(
+        zero_const, rank_minus_1, one_const, output_type=Type.i32
+    ).output(0)
+    batch_shape = ov_opset.gather(logits_shape, batch_indices, axis=0).output(0)
+
+    # Create final shape [batch_dims..., num_samples]
+    num_samples_const = ov_opset.constant([num_samples], Type.i32).output(0)
     final_shape = ov_opset.concat(
-        [batch_shape, ov_opset.constant([num_samples], dtype=Type.i32)], axis=0
-    )
+        [batch_shape, num_samples_const], axis=0
+    ).output(0)
+
     seed_tensor = draw_seed(seed)
     if isinstance(seed_tensor, OpenVINOKerasTensor):
         seed1, seed2 = convert_to_numpy(seed_tensor)
     else:
         seed1, seed2 = seed_tensor.data
+
+    probs_dtype = probs.get_element_type()
+    zero_float = ov_opset.constant(0.0, probs_dtype).output(0)
+    one_float = ov_opset.constant(1.0, probs_dtype).output(0)
+
     rand = ov_opset.random_uniform(
-        final_shape,
-        ov_opset.constant(0.0, dtype=probs.get_element_type()),
-        ov_opset.constant(1.0, dtype=probs.get_element_type()),
-        probs.get_element_type(),
-        seed1,
-        seed2,
-    )
-    rand = ov_opset.unsqueeze(rand, [-1])
-    cumsum_probs = ov_opset.unsqueeze(
-        cumsum_probs, ov_opset.constant([1], dtype=Type.i32)
-    )
-    greater = ov_opset.greater(rand, cumsum_probs)
+        final_shape, zero_float, one_float, probs_dtype, seed1, seed2
+    ).output(0)
+
+    rand_unsqueezed = ov_opset.unsqueeze(rand, neg_one_const).output(0)
+    cumsum_unsqueezed = ov_opset.unsqueeze(cumsum_probs, one_const).output(0)
+
+    # Count how many cumulative probabilities each random number exceeds
+    greater = ov_opset.greater(rand_unsqueezed, cumsum_unsqueezed).output(0)
     samples = ov_opset.reduce_sum(
-        ov_opset.convert(greater, Type.i32),
-        ov_opset.constant([-1], dtype=Type.i32),
-    )
-    samples = ov_opset.convert(samples, ov_dtype)
-    return OpenVINOKerasTensor(samples.output(0))
+        ov_opset.convert(greater, Type.i32).output(0), neg_one_const
+    ).output(0)
+
+    result = ov_opset.convert(samples, ov_dtype).output(0)
+    return OpenVINOKerasTensor(result)
 
 
 def randint(shape, minval, maxval, dtype="int32", seed=None):
