@@ -32,9 +32,7 @@ def uniform(shape, minval=0.0, maxval=1.0, dtype=None, seed=None):
     maxval_const = ov_opset.constant(maxval, dtype=dtype)
     if isinstance(shape, tuple):
         shape = list(shape)
-    output_shape_const = ov_opset.constant(
-        shape, dtype=Type.i32
-    )
+    output_shape_const = ov_opset.constant(shape, dtype=Type.i32)
     random_uniform = ov_opset.random_uniform(
         output_shape_const, minval_const, maxval_const, ov_type, seed1, seed2
     )
@@ -60,9 +58,7 @@ def categorical(logits, num_samples, dtype="int64", seed=None):
     ov_dtype = OPENVINO_DTYPES[dtype]
     logits = get_ov_output(logits)
     probs = ov_opset.softmax(logits, axis=-1)
-    cumsum_probs = ov_opset.cumsum(
-        probs, ov_opset.constant(-1, dtype="int32")
-    )
+    cumsum_probs = ov_opset.cumsum(probs, ov_opset.constant(-1, dtype="int32"))
     shape = get_shape_dims(logits)
     rank_tensor = ov_opset.shape_of(shape, Type.i32)
     rank = ov_opset.squeeze(rank_tensor, ov_opset.constant([0], dtype=Type.i32))
@@ -84,12 +80,8 @@ def categorical(logits, num_samples, dtype="int64", seed=None):
         seed1, seed2 = seed_tensor.data
     rand = ov_opset.random_uniform(
         final_shape,
-        ov_opset.constant(
-            0.0, dtype=probs.get_element_type()
-        ),
-        ov_opset.constant(
-            1.0, dtype=probs.get_element_type()
-        ),
+        ov_opset.constant(0.0, dtype=probs.get_element_type()),
+        ov_opset.constant(1.0, dtype=probs.get_element_type()),
         probs.get_element_type(),
         seed1,
         seed2,
