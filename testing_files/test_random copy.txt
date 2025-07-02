@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.0, pluggy-1.6.0 -- /home/mohamed-ashraf/Desktop/GSoC2025/env/bin/python
+cachedir: .pytest_cache
+rootdir: /home/mohamed-ashraf/Desktop/GSoC2025/keras-hub
+configfile: pytest.ini
+plugins: cov-6.1.1
+collecting ... collected 0 items
+
+=============================== warnings summary ===============================
+../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
+../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=65717) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+../env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10: DeprecationWarning: The `openvino.runtime` module is deprecated and will be removed in the 2026.0 release. Please replace `openvino.runtime` with `openvino`.
+    warnings.warn(
+
+../env/lib/python3.12/site-packages/_pytest/config/__init__.py:1474
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/_pytest/config/__init__.py:1474: PytestConfigWarning: Unknown config option: env
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================= 4 warnings in 0.00s ==============================

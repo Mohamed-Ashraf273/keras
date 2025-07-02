@@ -1,0 +1,162 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.0, pluggy-1.6.0 -- /home/mohamed-ashraf/Desktop/GSoC2025/env/bin/python
+cachedir: .pytest_cache
+rootdir: /home/mohamed-ashraf/Desktop/GSoC2025/keras-hub
+configfile: pytest.ini
+plugins: cov-6.1.1
+collecting ... collected 11 items
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::TestCase::test_session SKIPPED [  9%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_all_presets SKIPPED [ 18%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_causal_lm_basics FAILED [ 27%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_early_stopping PASSED [ 36%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_generate PASSED [ 45%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_generate_compilation PASSED [ 54%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_saved_model SKIPPED [ 63%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_score_layer_intercept_fn_exfiltration PASSED [ 72%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_score_logits PASSED [ 81%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_score_loss FAILED [ 90%]
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_session PASSED [100%]
+
+=================================== FAILURES ===================================
+__________________ MistralCausalLMTest.test_causal_lm_basics ___________________
+
+self = <keras_hub.src.models.mistral.mistral_causal_lm_test.MistralCausalLMTest testMethod=test_causal_lm_basics>
+
+    def test_causal_lm_basics(self):
+>       self.run_task_test(
+            cls=MistralCausalLM,
+            init_kwargs=self.init_kwargs,
+            train_data=self.train_data,
+            expected_output_shape=(2, 8, 10),
+        )
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras_hub/src/tests/test_case.py:628: in run_task_test
+    task.fit(x, y, sample_weight=sw)
+keras_hub/src/utils/pipeline_model.py:177: in fit
+    return super().fit(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MistralCausalLM name=mistral_causal_lm, built=True>
+x = <_PrefetchDataset element_spec=({'token_ids': TensorSpec(shape=(None, 8), dtype=tf.int32, name=None), 'padding_mask': ...None)}, TensorSpec(shape=(None, 8), dtype=tf.int32, name=None), TensorSpec(shape=(None, 8), dtype=tf.bool, name=None))>
+y = None, batch_size = None, epochs = 1, verbose = 'auto', callbacks = None
+validation_split = 0.0, validation_data = None, shuffle = True
+class_weight = None, sample_weight = None, initial_epoch = 0
+steps_per_epoch = None, validation_steps = None, validation_batch_size = None
+validation_freq = 1
+
+    def fit(
+        self,
+        x=None,
+        y=None,
+        batch_size=None,
+        epochs=1,
+        verbose="auto",
+        callbacks=None,
+        validation_split=0.0,
+        validation_data=None,
+        shuffle=True,
+        class_weight=None,
+        sample_weight=None,
+        initial_epoch=0,
+        steps_per_epoch=None,
+        validation_steps=None,
+        validation_batch_size=None,
+        validation_freq=1,
+    ):
+>       raise NotImplementedError(
+            "`fit` is not supported with openvino backend"
+        )
+E       NotImplementedError: `fit` is not supported with openvino backend
+
+../keras/keras/src/backend/openvino/trainer.py:168: NotImplementedError
+----------------------------- Captured stdout call -----------------------------
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 238ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 240ms/step
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 78ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 79ms/step
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 81ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 82ms/step
+----------------------------- Captured stderr call -----------------------------
+2025-07-02 18:58:28.609551: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2025-07-02 18:58:28.609593: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:137] retrieving CUDA diagnostic information for host: mohamed-ashraf-LOQ-15IRX9
+2025-07-02 18:58:28.609598: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:144] hostname: mohamed-ashraf-LOQ-15IRX9
+2025-07-02 18:58:28.609706: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:168] libcuda reported version is: 570.133.7
+2025-07-02 18:58:28.609726: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:172] kernel reported version is: 570.133.7
+2025-07-02 18:58:28.609729: I external/local_xla/xla/stream_executor/cuda/cuda_diagnostics.cc:259] kernel version seems to match DSO: 570.133.7
+2025-07-02 18:58:28.717642: E tensorflow/core/util/util.cc:131] oneDNN supports DT_INT64 only on platforms with AVX-512. Falling back to the default Eigen-based implementation if present.
+_____________________ MistralCausalLMTest.test_score_loss ______________________
+
+self = <keras_hub.src.models.mistral.mistral_causal_lm_test.MistralCausalLMTest testMethod=test_score_loss>
+
+    def test_score_loss(self):
+        # Setup prompts, models, and associated expected shapes.
+        prompts = ["the quick brown fox", "the quick brown fox"]
+        causal_lm = MistralCausalLM(**self.init_kwargs)
+        expected_score_shape = (2, 8)
+    
+        # Preprocess prompts to get tokenized representations and padding masks.
+        preprocessed_prompts = causal_lm.preprocessor.generate_preprocess(
+            prompts
+        )
+        token_ids = preprocessed_prompts["token_ids"]
+        padding_mask = preprocessed_prompts["padding_mask"]
+>       target_ids = ops.roll(token_ids, shift=-1, axis=1)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../keras/keras/src/ops/numpy.py:5189: in roll
+    return backend.numpy.roll(x, shift, axis=axis)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7da124f54da0>
+shift = -1, axis = 1
+
+    def roll(x, shift, axis=None):
+>       raise NotImplementedError("`roll` is not supported with openvino backend")
+E       NotImplementedError: `roll` is not supported with openvino backend
+
+../keras/keras/src/backend/openvino/numpy.py:1395: NotImplementedError
+=============================== warnings summary ===============================
+../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
+../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=43339) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+../env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10: DeprecationWarning: The `openvino.runtime` module is deprecated and will be removed in the 2026.0 release. Please replace `openvino.runtime` with `openvino`.
+    warnings.warn(
+
+../env/lib/python3.12/site-packages/_pytest/config/__init__.py:1474
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/_pytest/config/__init__.py:1474: PytestConfigWarning: Unknown config option: env
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+../env/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:91
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:91: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+    _EPOCH_DATETIME_NAIVE = datetime.datetime.utcfromtimestamp(0)
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_causal_lm_basics
+  /home/mohamed-ashraf/Desktop/GSoC2025/keras/keras/src/saving/serialization_lib.py:734: UserWarning: `compile()` was not called as part of model loading because the model's `compile()` method is custom. All subclassed Models that have `compile()` overridden should also override `get_compile_config()` and `compile_from_config(config)`. Alternatively, you can call `compile()` manually after loading.
+    instance.compile_from_config(compile_config)
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_causal_lm_basics
+  /home/mohamed-ashraf/Desktop/GSoC2025/keras-hub/keras_hub/src/tests/test_case.py:607: DeprecationWarning: The `check_types` argument is deprecated and no longer has any effect. For a looser check, use `keras.tree.assert_same_paths()`, which considers `list`, `tuple`, `namedtuple` and `deque` as matching
+    tree.assert_same_structure(
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_causal_lm_basics
+  /home/mohamed-ashraf/Desktop/GSoC2025/keras/keras/src/models/functional.py:241: UserWarning: The structure of `inputs` doesn't match the expected structure.
+  Expected: {'token_ids': 'token_ids', 'padding_mask': 'padding_mask'}
+  Received: inputs={'padding_mask': 'Tensor(shape=(2, 8))', 'token_ids': 'Tensor(shape=(2, 8))'}
+    warnings.warn(msg)
+
+keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_session
+  /usr/lib/python3.12/unittest/case.py:690: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TensorFlowTestCase.test_session of <keras_hub.src.models.mistral.mistral_causal_lm_test.MistralCausalLMTest testMethod=test_session>>)
+    return self.run(*args, **kwds)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_causal_lm_basics
+FAILED keras_hub/src/models/mistral/mistral_causal_lm_test.py::MistralCausalLMTest::test_score_loss
+============== 2 failed, 6 passed, 3 skipped, 9 warnings in 4.75s ==============
