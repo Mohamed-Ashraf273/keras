@@ -3,14 +3,14 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 
-from keras import ops
-
 from keras_hub.src.models.gemma.gemma_backbone import GemmaBackbone
 from keras_hub.src.models.gemma.gemma_causal_lm import GemmaCausalLM
 from keras_hub.src.models.gemma.gemma_causal_lm_preprocessor import (
     GemmaCausalLMPreprocessor,
 )
 from keras_hub.src.models.gemma.gemma_tokenizer import GemmaTokenizer
+
+from keras import ops
 
 # === 1. Setup ===
 tokenizer = GemmaTokenizer(
