@@ -487,6 +487,14 @@ class OpenVINOKerasTensor:
         )
         return OpenVINOKerasTensor(ov_opset.mod(first, other).output(0))
 
+    def __array__(self):
+        raise ValueError(
+            "An OpenVINOKerasTensor is symbolic: it's a placeholder"
+            "for a shape an a dtype. It doesn't have any actual"
+            "numerical value. "
+            "You cannot convert it to a NumPy array."
+        )
+
 
 def ov_to_keras_type(ov_type):
     for _keras_type, _ov_type in OPENVINO_DTYPES.items():
