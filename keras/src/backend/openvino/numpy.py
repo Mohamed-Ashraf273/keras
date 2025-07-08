@@ -433,12 +433,6 @@ def argsort(x, axis=-1):
 
 
 def array(x, dtype=None):
-    if isinstance(x, OpenVINOKerasTensor):
-        if dtype is not None:
-            dtype = standardize_dtype(dtype)
-            dtype = OPENVINO_DTYPES[dtype]
-            x = ov_opset.convert(x.output, dtype)
-        return convert_to_numpy(OpenVINOKerasTensor(x.output))
     if dtype is not None:
         return np.array(x, dtype=dtype)
     return np.array(x)
