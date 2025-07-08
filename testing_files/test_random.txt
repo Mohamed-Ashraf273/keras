@@ -1,0 +1,2580 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.0, pluggy-1.6.0 -- /home/mohamed-ashraf/Desktop/GSoC2025/env/bin/python
+cachedir: .pytest_cache
+rootdir: /home/mohamed-ashraf/Desktop/GSoC2025/keras
+configfile: pytest.ini
+plugins: cov-6.1.1
+collecting ... collected 88 items
+
+keras/src/random/random_test.py::RandomCorrectnessTest::test_beta0 FAILED [  1%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_beta1 FAILED [  2%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_beta2 FAILED [  3%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_binomial0 FAILED [  4%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_binomial1 FAILED [  5%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_binomial2 FAILED [  6%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_categorical0 PASSED [  7%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_categorical1 PASSED [  9%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_categorical2 PASSED [ 10%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_categorical3 PASSED [ 11%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_dropout FAILED [ 12%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_dropout_noise_shape FAILED [ 13%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_gamma0 FAILED [ 14%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_gamma1 FAILED [ 15%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_gamma2 FAILED [ 17%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_global_seed_generator PASSED [ 18%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_normal0 PASSED [ 19%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_normal1 PASSED [ 20%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_normal2 PASSED [ 21%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_normal3 PASSED [ 22%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_normal4 PASSED [ 23%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_randint0 FAILED [ 25%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_randint1 FAILED [ 26%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_randint2 FAILED [ 27%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_randint3 FAILED [ 28%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_randint4 FAILED [ 29%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_shuffle FAILED [ 30%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal0 FAILED [ 31%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal1 FAILED [ 32%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal2 FAILED [ 34%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal3 FAILED [ 35%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal4 FAILED [ 36%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal5 FAILED [ 37%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform0 FAILED [ 38%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform1 FAILED [ 39%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform2 FAILED [ 40%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform3 FAILED [ 42%]
+keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform4 FAILED [ 43%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_beta_tf_data_compatibility FAILED [ 44%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_categorical_errors PASSED [ 45%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_dropout_jax_jit_stateless SKIPPED [ 46%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_jax_rngkey_seed SKIPPED [ 47%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_jax_unseed_disallowed_during_tracing SKIPPED [ 48%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_randint_dtype_validation PASSED [ 50%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_tf_cast_seed SKIPPED [ 51%]
+keras/src/random/random_test.py::RandomBehaviorTest::test_uniform_dtype_validation PASSED [ 52%]
+keras/src/random/random_test.py::RandomDTypeTest::test_beta_bfloat16 FAILED [ 53%]
+keras/src/random/random_test.py::RandomDTypeTest::test_beta_float16 FAILED [ 54%]
+keras/src/random/random_test.py::RandomDTypeTest::test_beta_float32 FAILED [ 55%]
+keras/src/random/random_test.py::RandomDTypeTest::test_beta_float64 FAILED [ 56%]
+keras/src/random/random_test.py::RandomDTypeTest::test_binomial_bfloat16 FAILED [ 57%]
+keras/src/random/random_test.py::RandomDTypeTest::test_binomial_float16 FAILED [ 59%]
+keras/src/random/random_test.py::RandomDTypeTest::test_binomial_float32 FAILED [ 60%]
+keras/src/random/random_test.py::RandomDTypeTest::test_binomial_float64 FAILED [ 61%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_int16 PASSED [ 62%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_int32 PASSED [ 63%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_int64 PASSED [ 64%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_int8 PASSED [ 65%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_uint16 PASSED [ 67%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_uint32 PASSED [ 68%]
+keras/src/random/random_test.py::RandomDTypeTest::test_categorical_uint8 PASSED [ 69%]
+keras/src/random/random_test.py::RandomDTypeTest::test_dropout_bfloat16 FAILED [ 70%]
+keras/src/random/random_test.py::RandomDTypeTest::test_dropout_float16 FAILED [ 71%]
+keras/src/random/random_test.py::RandomDTypeTest::test_dropout_float32 FAILED [ 72%]
+keras/src/random/random_test.py::RandomDTypeTest::test_dropout_float64 FAILED [ 73%]
+keras/src/random/random_test.py::RandomDTypeTest::test_gamma_bfloat16 FAILED [ 75%]
+keras/src/random/random_test.py::RandomDTypeTest::test_gamma_float16 FAILED [ 76%]
+keras/src/random/random_test.py::RandomDTypeTest::test_gamma_float32 FAILED [ 77%]
+keras/src/random/random_test.py::RandomDTypeTest::test_gamma_float64 FAILED [ 78%]
+keras/src/random/random_test.py::RandomDTypeTest::test_normal_bfloat16 FAILED [ 79%]
+keras/src/random/random_test.py::RandomDTypeTest::test_normal_float16 PASSED [ 80%]
+keras/src/random/random_test.py::RandomDTypeTest::test_normal_float32 PASSED [ 81%]
+keras/src/random/random_test.py::RandomDTypeTest::test_normal_float64 PASSED [ 82%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_int16 FAILED [ 84%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_int32 FAILED [ 85%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_int64 FAILED [ 86%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_int8 FAILED [ 87%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_uint16 FAILED [ 88%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_uint32 FAILED [ 89%]
+keras/src/random/random_test.py::RandomDTypeTest::test_randint_uint8 FAILED [ 90%]
+keras/src/random/random_test.py::RandomDTypeTest::test_truncated_normal_bfloat16 FAILED [ 92%]
+keras/src/random/random_test.py::RandomDTypeTest::test_truncated_normal_float16 PASSED [ 93%]
+keras/src/random/random_test.py::RandomDTypeTest::test_truncated_normal_float32 PASSED [ 94%]
+keras/src/random/random_test.py::RandomDTypeTest::test_truncated_normal_float64 PASSED [ 95%]
+keras/src/random/random_test.py::RandomDTypeTest::test_uniform_bfloat16 FAILED [ 96%]
+keras/src/random/random_test.py::RandomDTypeTest::test_uniform_float16 PASSED [ 97%]
+keras/src/random/random_test.py::RandomDTypeTest::test_uniform_float32 PASSED [ 98%]
+keras/src/random/random_test.py::RandomDTypeTest::test_uniform_float64 PASSED [100%]
+
+=================================== FAILURES ===================================
+_______________________ RandomCorrectnessTest.test_beta0 _______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_beta0>
+seed = 10, shape = (10000,), alpha = 3.0, beta = 2.0, dtype = 'float16'
+
+    @parameterized.parameters(
+        {
+            "seed": 10,
+            "shape": (10000,),
+            "alpha": 3.0,
+            "beta": 2.0,
+            "dtype": "float16",
+        },
+        {
+            "seed": 10,
+            "shape": (10000, 3),
+            "alpha": [[7.0, 0.5, 1.5]],
+            "beta": [[15.0, 0.9, 4.5]],
+            "dtype": "float32",
+        },
+        {
+            "seed": 10,
+            "shape": (10000, 30),
+            "alpha": 1.0,
+            "beta": 1.0,
+            "dtype": "float32",
+        },
+    )
+    def test_beta(self, seed, shape, alpha, beta, dtype):
+        set_random_seed(1337)
+>       values = random.beta(
+            shape=shape, alpha=alpha, beta=beta, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (10000,), alpha = 3.0, beta = 2.0, dtype = 'float16', seed = 10
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+----------------------------- Captured stderr call -----------------------------
+2025-07-01 23:26:35.928595: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-07-01 23:26:35.938329: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1751401595.949533   65886 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1751401595.952924   65886 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-07-01 23:26:35.964337: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+_______________________ RandomCorrectnessTest.test_beta1 _______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_beta1>
+seed = 10, shape = (10000, 3), alpha = [[7.0, 0.5, 1.5]]
+beta = [[15.0, 0.9, 4.5]], dtype = 'float32'
+
+    @parameterized.parameters(
+        {
+            "seed": 10,
+            "shape": (10000,),
+            "alpha": 3.0,
+            "beta": 2.0,
+            "dtype": "float16",
+        },
+        {
+            "seed": 10,
+            "shape": (10000, 3),
+            "alpha": [[7.0, 0.5, 1.5]],
+            "beta": [[15.0, 0.9, 4.5]],
+            "dtype": "float32",
+        },
+        {
+            "seed": 10,
+            "shape": (10000, 30),
+            "alpha": 1.0,
+            "beta": 1.0,
+            "dtype": "float32",
+        },
+    )
+    def test_beta(self, seed, shape, alpha, beta, dtype):
+        set_random_seed(1337)
+>       values = random.beta(
+            shape=shape, alpha=alpha, beta=beta, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (10000, 3), alpha = [[7.0, 0.5, 1.5]], beta = [[15.0, 0.9, 4.5]]
+dtype = 'float32', seed = 10
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+_______________________ RandomCorrectnessTest.test_beta2 _______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_beta2>
+seed = 10, shape = (10000, 30), alpha = 1.0, beta = 1.0, dtype = 'float32'
+
+    @parameterized.parameters(
+        {
+            "seed": 10,
+            "shape": (10000,),
+            "alpha": 3.0,
+            "beta": 2.0,
+            "dtype": "float16",
+        },
+        {
+            "seed": 10,
+            "shape": (10000, 3),
+            "alpha": [[7.0, 0.5, 1.5]],
+            "beta": [[15.0, 0.9, 4.5]],
+            "dtype": "float32",
+        },
+        {
+            "seed": 10,
+            "shape": (10000, 30),
+            "alpha": 1.0,
+            "beta": 1.0,
+            "dtype": "float32",
+        },
+    )
+    def test_beta(self, seed, shape, alpha, beta, dtype):
+        set_random_seed(1337)
+>       values = random.beta(
+            shape=shape, alpha=alpha, beta=beta, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (10000, 30), alpha = 1.0, beta = 1.0, dtype = 'float32', seed = 10
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+_____________________ RandomCorrectnessTest.test_binomial0 _____________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_binomial0>
+seed = 10, shape = (5, 2), counts = 50000.0, probabilities = 0.5
+dtype = 'float16'
+
+    @parameterized.parameters(
+        {
+            "seed": 10,
+            "shape": (5, 2),
+            "counts": 5e4,
+            "probabilities": 0.5,
+            "dtype": "float16",
+        },
+        {
+            "seed": 10,
+            "shape": (2,),
+            "counts": 1e5,
+            "probabilities": 0.5,
+            "dtype": "float32",
+        },
+        {
+            "seed": 10,
+            "shape": (2, 3),
+            "counts": [[1e5, 2e5, 3e5], [4e5, 5e5, 6e5]],
+            "probabilities": [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]],
+            "dtype": "float32",
+        },
+    )
+    def test_binomial(self, seed, shape, counts, probabilities, dtype):
+        set_random_seed(1337)
+>       values = random.binomial(
+            shape=shape,
+            counts=counts,
+            probabilities=probabilities,
+            seed=seed,
+            dtype=dtype,
+        )
+
+keras/src/random/random_test.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (5, 2), counts = 50000.0, probabilities = 0.5, dtype = 'float16'
+seed = 10
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+_____________________ RandomCorrectnessTest.test_binomial1 _____________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_binomial1>
+seed = 10, shape = (2,), counts = 100000.0, probabilities = 0.5
+dtype = 'float32'
+
+    @parameterized.parameters(
+        {
+            "seed": 10,
+            "shape": (5, 2),
+            "counts": 5e4,
+            "probabilities": 0.5,
+            "dtype": "float16",
+        },
+        {
+            "seed": 10,
+            "shape": (2,),
+            "counts": 1e5,
+            "probabilities": 0.5,
+            "dtype": "float32",
+        },
+        {
+            "seed": 10,
+            "shape": (2, 3),
+            "counts": [[1e5, 2e5, 3e5], [4e5, 5e5, 6e5]],
+            "probabilities": [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]],
+            "dtype": "float32",
+        },
+    )
+    def test_binomial(self, seed, shape, counts, probabilities, dtype):
+        set_random_seed(1337)
+>       values = random.binomial(
+            shape=shape,
+            counts=counts,
+            probabilities=probabilities,
+            seed=seed,
+            dtype=dtype,
+        )
+
+keras/src/random/random_test.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2,), counts = 100000.0, probabilities = 0.5, dtype = 'float32'
+seed = 10
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+_____________________ RandomCorrectnessTest.test_binomial2 _____________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_binomial2>
+seed = 10, shape = (2, 3)
+counts = [[100000.0, 200000.0, 300000.0], [400000.0, 500000.0, 600000.0]]
+probabilities = [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]], dtype = 'float32'
+
+    @parameterized.parameters(
+        {
+            "seed": 10,
+            "shape": (5, 2),
+            "counts": 5e4,
+            "probabilities": 0.5,
+            "dtype": "float16",
+        },
+        {
+            "seed": 10,
+            "shape": (2,),
+            "counts": 1e5,
+            "probabilities": 0.5,
+            "dtype": "float32",
+        },
+        {
+            "seed": 10,
+            "shape": (2, 3),
+            "counts": [[1e5, 2e5, 3e5], [4e5, 5e5, 6e5]],
+            "probabilities": [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]],
+            "dtype": "float32",
+        },
+    )
+    def test_binomial(self, seed, shape, counts, probabilities, dtype):
+        set_random_seed(1337)
+>       values = random.binomial(
+            shape=shape,
+            counts=counts,
+            probabilities=probabilities,
+            seed=seed,
+            dtype=dtype,
+        )
+
+keras/src/random/random_test.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3)
+counts = [[100000.0, 200000.0, 300000.0], [400000.0, 500000.0, 600000.0]]
+probabilities = [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]], dtype = 'float32', seed = 10
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+______________________ RandomCorrectnessTest.test_dropout ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_dropout>
+
+    def test_dropout(self):
+        x = ops.ones((3, 5))
+>       self.assertAllClose(random.dropout(x, rate=0, seed=0), x)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:213: in dropout
+    return backend.random.dropout(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7bcc88759850>
+rate = 0, noise_shape = None, seed = 0
+
+    def dropout(inputs, rate, noise_shape=None, seed=None):
+>       raise NotImplementedError(
+            "`dropout` is not supported with openvino backend"
+        )
+E       NotImplementedError: `dropout` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:133: NotImplementedError
+________________ RandomCorrectnessTest.test_dropout_noise_shape ________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_dropout_noise_shape>
+
+    def test_dropout_noise_shape(self):
+        inputs = ops.ones((2, 3, 5, 7))
+>       x = random.dropout(
+            inputs, rate=0.3, noise_shape=[None, 3, 5, None], seed=0
+        )
+
+keras/src/random/random_test.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:213: in dropout
+    return backend.random.dropout(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7bcc887596d0>
+rate = 0.3, noise_shape = [None, 3, 5, None], seed = 0
+
+    def dropout(inputs, rate, noise_shape=None, seed=None):
+>       raise NotImplementedError(
+            "`dropout` is not supported with openvino backend"
+        )
+E       NotImplementedError: `dropout` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:133: NotImplementedError
+______________________ RandomCorrectnessTest.test_gamma0 _______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_gamma0>
+seed = 10, shape = (5, 2), alpha = 2.0, dtype = 'float16'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5, 2), "alpha": 2.0, "dtype": "float16"},
+        {"seed": 10, "shape": (2,), "alpha": 1.5, "dtype": "float32"},
+        {"seed": 10, "shape": (2, 3), "alpha": 0.5, "dtype": "float32"},
+    )
+    def test_gamma(self, seed, shape, alpha, dtype):
+>       values = random.gamma(shape, alpha=alpha, seed=seed, dtype=dtype)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (5, 2), alpha = 2.0, dtype = 'float16', seed = 10
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+______________________ RandomCorrectnessTest.test_gamma1 _______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_gamma1>
+seed = 10, shape = (2,), alpha = 1.5, dtype = 'float32'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5, 2), "alpha": 2.0, "dtype": "float16"},
+        {"seed": 10, "shape": (2,), "alpha": 1.5, "dtype": "float32"},
+        {"seed": 10, "shape": (2, 3), "alpha": 0.5, "dtype": "float32"},
+    )
+    def test_gamma(self, seed, shape, alpha, dtype):
+>       values = random.gamma(shape, alpha=alpha, seed=seed, dtype=dtype)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2,), alpha = 1.5, dtype = 'float32', seed = 10
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+______________________ RandomCorrectnessTest.test_gamma2 _______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_gamma2>
+seed = 10, shape = (2, 3), alpha = 0.5, dtype = 'float32'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5, 2), "alpha": 2.0, "dtype": "float16"},
+        {"seed": 10, "shape": (2,), "alpha": 1.5, "dtype": "float32"},
+        {"seed": 10, "shape": (2, 3), "alpha": 0.5, "dtype": "float32"},
+    )
+    def test_gamma(self, seed, shape, alpha, dtype):
+>       values = random.gamma(shape, alpha=alpha, seed=seed, dtype=dtype)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 0.5, dtype = 'float32', seed = 10
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+_____________________ RandomCorrectnessTest.test_randint0 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_randint0>
+seed = 10, shape = (5,), min = 0, max = 10, dtype = 'uint16'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "min": 0, "max": 10, "dtype": "uint16"},
+        {"seed": 10, "shape": (2, 3), "min": 0, "max": 10, "dtype": "uint32"},
+        {"seed": 10, "shape": (2, 3, 4), "min": 0, "max": 2, "dtype": "int8"},
+        {"seed": 10, "shape": (2, 3), "min": -1, "max": 1, "dtype": "int16"},
+        {"seed": 10, "shape": (2, 3), "min": 1, "max": 3, "dtype": "int32"},
+    )
+    def test_randint(self, seed, shape, min, max, dtype):
+        np.random.seed(seed)
+        np_res = np.random.randint(low=min, high=max, size=shape)
+>       res = random.randint(
+            shape, minval=min, maxval=max, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (5,), minval = 0, maxval = 10, dtype = 'uint16', seed = 10
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+_____________________ RandomCorrectnessTest.test_randint1 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_randint1>
+seed = 10, shape = (2, 3), min = 0, max = 10, dtype = 'uint32'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "min": 0, "max": 10, "dtype": "uint16"},
+        {"seed": 10, "shape": (2, 3), "min": 0, "max": 10, "dtype": "uint32"},
+        {"seed": 10, "shape": (2, 3, 4), "min": 0, "max": 2, "dtype": "int8"},
+        {"seed": 10, "shape": (2, 3), "min": -1, "max": 1, "dtype": "int16"},
+        {"seed": 10, "shape": (2, 3), "min": 1, "max": 3, "dtype": "int32"},
+    )
+    def test_randint(self, seed, shape, min, max, dtype):
+        np.random.seed(seed)
+        np_res = np.random.randint(low=min, high=max, size=shape)
+>       res = random.randint(
+            shape, minval=min, maxval=max, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'uint32', seed = 10
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+_____________________ RandomCorrectnessTest.test_randint2 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_randint2>
+seed = 10, shape = (2, 3, 4), min = 0, max = 2, dtype = 'int8'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "min": 0, "max": 10, "dtype": "uint16"},
+        {"seed": 10, "shape": (2, 3), "min": 0, "max": 10, "dtype": "uint32"},
+        {"seed": 10, "shape": (2, 3, 4), "min": 0, "max": 2, "dtype": "int8"},
+        {"seed": 10, "shape": (2, 3), "min": -1, "max": 1, "dtype": "int16"},
+        {"seed": 10, "shape": (2, 3), "min": 1, "max": 3, "dtype": "int32"},
+    )
+    def test_randint(self, seed, shape, min, max, dtype):
+        np.random.seed(seed)
+        np_res = np.random.randint(low=min, high=max, size=shape)
+>       res = random.randint(
+            shape, minval=min, maxval=max, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3, 4), minval = 0, maxval = 2, dtype = 'int8', seed = 10
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+_____________________ RandomCorrectnessTest.test_randint3 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_randint3>
+seed = 10, shape = (2, 3), min = -1, max = 1, dtype = 'int16'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "min": 0, "max": 10, "dtype": "uint16"},
+        {"seed": 10, "shape": (2, 3), "min": 0, "max": 10, "dtype": "uint32"},
+        {"seed": 10, "shape": (2, 3, 4), "min": 0, "max": 2, "dtype": "int8"},
+        {"seed": 10, "shape": (2, 3), "min": -1, "max": 1, "dtype": "int16"},
+        {"seed": 10, "shape": (2, 3), "min": 1, "max": 3, "dtype": "int32"},
+    )
+    def test_randint(self, seed, shape, min, max, dtype):
+        np.random.seed(seed)
+        np_res = np.random.randint(low=min, high=max, size=shape)
+>       res = random.randint(
+            shape, minval=min, maxval=max, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = -1, maxval = 1, dtype = 'int16', seed = 10
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+_____________________ RandomCorrectnessTest.test_randint4 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_randint4>
+seed = 10, shape = (2, 3), min = 1, max = 3, dtype = 'int32'
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "min": 0, "max": 10, "dtype": "uint16"},
+        {"seed": 10, "shape": (2, 3), "min": 0, "max": 10, "dtype": "uint32"},
+        {"seed": 10, "shape": (2, 3, 4), "min": 0, "max": 2, "dtype": "int8"},
+        {"seed": 10, "shape": (2, 3), "min": -1, "max": 1, "dtype": "int16"},
+        {"seed": 10, "shape": (2, 3), "min": 1, "max": 3, "dtype": "int32"},
+    )
+    def test_randint(self, seed, shape, min, max, dtype):
+        np.random.seed(seed)
+        np_res = np.random.randint(low=min, high=max, size=shape)
+>       res = random.randint(
+            shape, minval=min, maxval=max, seed=seed, dtype=dtype
+        )
+
+keras/src/random/random_test.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 1, maxval = 3, dtype = 'int32', seed = 10
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+______________________ RandomCorrectnessTest.test_shuffle ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_shuffle>
+
+    def test_shuffle(self):
+        x = np.arange(100).reshape(10, 10)
+    
+        # Test axis=0
+>       y = random.shuffle(x, seed=0)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:240: in shuffle
+    return backend.random.shuffle(x, axis=axis, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = array([[ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+       [20, 21, 22, ...75, 76, 77, 78, 79],
+       [80, 81, 82, 83, 84, 85, 86, 87, 88, 89],
+       [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]])
+axis = 0, seed = 0
+
+    def shuffle(x, axis=0, seed=None):
+>       raise NotImplementedError(
+            "`shuffle` is not supported with openvino backend"
+        )
+E       NotImplementedError: `shuffle` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:139: NotImplementedError
+_________________ RandomCorrectnessTest.test_truncated_normal0 _________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_truncated_normal0>
+seed = 10, shape = (5,), mean = 0, stddev = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3, 4), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 3},
+        # Test list shapes.
+        {"seed": 10, "shape": [2, 3], "mean": 10, "stddev": 3},
+    )
+    def test_truncated_normal(self, seed, shape, mean, stddev):
+        np.random.seed(seed)
+        np_res = np.random.normal(loc=mean, scale=stddev, size=shape)
+        res = random.truncated_normal(
+            shape, mean=mean, stddev=stddev, seed=seed
+        )
+        self.assertEqual(res.shape, tuple(shape))
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), mean + 2 * stddev)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_________________ RandomCorrectnessTest.test_truncated_normal1 _________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_truncated_normal1>
+seed = 10, shape = (2, 3), mean = 0, stddev = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3, 4), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 3},
+        # Test list shapes.
+        {"seed": 10, "shape": [2, 3], "mean": 10, "stddev": 3},
+    )
+    def test_truncated_normal(self, seed, shape, mean, stddev):
+        np.random.seed(seed)
+        np_res = np.random.normal(loc=mean, scale=stddev, size=shape)
+        res = random.truncated_normal(
+            shape, mean=mean, stddev=stddev, seed=seed
+        )
+        self.assertEqual(res.shape, tuple(shape))
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), mean + 2 * stddev)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_________________ RandomCorrectnessTest.test_truncated_normal2 _________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_truncated_normal2>
+seed = 10, shape = (2, 3, 4), mean = 0, stddev = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3, 4), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 3},
+        # Test list shapes.
+        {"seed": 10, "shape": [2, 3], "mean": 10, "stddev": 3},
+    )
+    def test_truncated_normal(self, seed, shape, mean, stddev):
+        np.random.seed(seed)
+        np_res = np.random.normal(loc=mean, scale=stddev, size=shape)
+        res = random.truncated_normal(
+            shape, mean=mean, stddev=stddev, seed=seed
+        )
+        self.assertEqual(res.shape, tuple(shape))
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), mean + 2 * stddev)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_________________ RandomCorrectnessTest.test_truncated_normal3 _________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_truncated_normal3>
+seed = 10, shape = (2, 3), mean = 10, stddev = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3, 4), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 3},
+        # Test list shapes.
+        {"seed": 10, "shape": [2, 3], "mean": 10, "stddev": 3},
+    )
+    def test_truncated_normal(self, seed, shape, mean, stddev):
+        np.random.seed(seed)
+        np_res = np.random.normal(loc=mean, scale=stddev, size=shape)
+        res = random.truncated_normal(
+            shape, mean=mean, stddev=stddev, seed=seed
+        )
+        self.assertEqual(res.shape, tuple(shape))
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), mean + 2 * stddev)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_________________ RandomCorrectnessTest.test_truncated_normal4 _________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_truncated_normal4>
+seed = 10, shape = (2, 3), mean = 10, stddev = 3
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3, 4), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 3},
+        # Test list shapes.
+        {"seed": 10, "shape": [2, 3], "mean": 10, "stddev": 3},
+    )
+    def test_truncated_normal(self, seed, shape, mean, stddev):
+        np.random.seed(seed)
+        np_res = np.random.normal(loc=mean, scale=stddev, size=shape)
+        res = random.truncated_normal(
+            shape, mean=mean, stddev=stddev, seed=seed
+        )
+        self.assertEqual(res.shape, tuple(shape))
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), mean + 2 * stddev)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_________________ RandomCorrectnessTest.test_truncated_normal5 _________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_truncated_normal5>
+seed = 10, shape = [2, 3], mean = 10, stddev = 3
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3, 4), "mean": 0, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 1},
+        {"seed": 10, "shape": (2, 3), "mean": 10, "stddev": 3},
+        # Test list shapes.
+        {"seed": 10, "shape": [2, 3], "mean": 10, "stddev": 3},
+    )
+    def test_truncated_normal(self, seed, shape, mean, stddev):
+        np.random.seed(seed)
+        np_res = np.random.normal(loc=mean, scale=stddev, size=shape)
+        res = random.truncated_normal(
+            shape, mean=mean, stddev=stddev, seed=seed
+        )
+        self.assertEqual(res.shape, tuple(shape))
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), mean + 2 * stddev)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_____________________ RandomCorrectnessTest.test_uniform0 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_uniform0>
+seed = 10, shape = (5,), minval = 0, maxval = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3, 4), "minval": 0, "maxval": 2},
+        {"seed": 10, "shape": (2, 3), "minval": -1, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 1, "maxval": 3},
+    )
+    def test_uniform(self, seed, shape, minval, maxval):
+        np.random.seed(seed)
+        np_res = np.random.uniform(low=minval, high=maxval, size=shape)
+        res = random.uniform(shape, minval=minval, maxval=maxval, seed=seed)
+        self.assertEqual(res.shape, shape)
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), maxval)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_____________________ RandomCorrectnessTest.test_uniform1 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_uniform1>
+seed = 10, shape = (2, 3), minval = 0, maxval = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3, 4), "minval": 0, "maxval": 2},
+        {"seed": 10, "shape": (2, 3), "minval": -1, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 1, "maxval": 3},
+    )
+    def test_uniform(self, seed, shape, minval, maxval):
+        np.random.seed(seed)
+        np_res = np.random.uniform(low=minval, high=maxval, size=shape)
+        res = random.uniform(shape, minval=minval, maxval=maxval, seed=seed)
+        self.assertEqual(res.shape, shape)
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), maxval)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_____________________ RandomCorrectnessTest.test_uniform2 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_uniform2>
+seed = 10, shape = (2, 3, 4), minval = 0, maxval = 2
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3, 4), "minval": 0, "maxval": 2},
+        {"seed": 10, "shape": (2, 3), "minval": -1, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 1, "maxval": 3},
+    )
+    def test_uniform(self, seed, shape, minval, maxval):
+        np.random.seed(seed)
+        np_res = np.random.uniform(low=minval, high=maxval, size=shape)
+        res = random.uniform(shape, minval=minval, maxval=maxval, seed=seed)
+        self.assertEqual(res.shape, shape)
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), maxval)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_____________________ RandomCorrectnessTest.test_uniform3 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_uniform3>
+seed = 10, shape = (2, 3), minval = -1, maxval = 1
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3, 4), "minval": 0, "maxval": 2},
+        {"seed": 10, "shape": (2, 3), "minval": -1, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 1, "maxval": 3},
+    )
+    def test_uniform(self, seed, shape, minval, maxval):
+        np.random.seed(seed)
+        np_res = np.random.uniform(low=minval, high=maxval, size=shape)
+        res = random.uniform(shape, minval=minval, maxval=maxval, seed=seed)
+        self.assertEqual(res.shape, shape)
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), maxval)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+_____________________ RandomCorrectnessTest.test_uniform4 ______________________
+
+self = <keras.src.random.random_test.RandomCorrectnessTest testMethod=test_uniform4>
+seed = 10, shape = (2, 3), minval = 1, maxval = 3
+
+    @parameterized.parameters(
+        {"seed": 10, "shape": (5,), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 0, "maxval": 1},
+        {"seed": 10, "shape": (2, 3, 4), "minval": 0, "maxval": 2},
+        {"seed": 10, "shape": (2, 3), "minval": -1, "maxval": 1},
+        {"seed": 10, "shape": (2, 3), "minval": 1, "maxval": 3},
+    )
+    def test_uniform(self, seed, shape, minval, maxval):
+        np.random.seed(seed)
+        np_res = np.random.uniform(low=minval, high=maxval, size=shape)
+        res = random.uniform(shape, minval=minval, maxval=maxval, seed=seed)
+        self.assertEqual(res.shape, shape)
+        self.assertEqual(res.shape, np_res.shape)
+>       self.assertLessEqual(ops.max(res), maxval)
+                             ^^^^^^^^^^^^
+
+keras/src/random/random_test.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/numpy.py:4134: in max
+    return backend.numpy.max(x, axis=axis, keepdims=keepdims, initial=initial)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+keras/src/backend/openvino/numpy.py:92: in max
+    reduce_axis = ov_opset.constant(axis, Type.i32).output(0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <openvino.utils.decorators.MultiMethod object at 0x7bccc596cda0>
+args = (None, <Type: 'int32_t'>), kwargs = {}
+arg_types = (<class 'NoneType'>, <class 'openvino._pyopenvino.Type'>)
+key = (<class 'openvino._pyopenvino.Tensor'>, <class 'bool'>, typing.Optional[str])
+kwarg_types = {}, key_matched = None
+
+    def __call__(self, *args, **kwargs) -> Any:  # type: ignore
+        arg_types = tuple(arg.__class__ for arg in args)
+        kwarg_types = {key: type(value) for key, value in kwargs.items()}
+    
+        key_matched = None
+        if len(kwarg_types) == 0 and len(arg_types) != 0:
+            for key in self.typemap.keys():
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, key):
+                    key_matched = key
+                    break
+        elif len(arg_types) == 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # if kwargs of called function are subset of overloaded function, we use this overload
+                if kwarg_types.keys() <= func_signature.keys():
+                    key_matched = key
+                    break
+        elif len(arg_types) != 0 and len(kwarg_types) != 0:
+            for key, func in self.typemap.items():
+                func_signature = {arg_name: types.annotation for arg_name, types in signature(func).parameters.items()}
+                # compare types of called function with overloads
+                if self.check_invoked_types_in_overloaded_funcs(arg_types, tuple(func_signature.values())):
+                    # if kwargs of called function are subset of overloaded function, we use this overload
+                    if kwarg_types.keys() <= func_signature.keys():
+                        key_matched = key
+                        break
+    
+        if key_matched is None:
+>           raise TypeError(f"The necessary overload for {self.name} was not found")
+E           TypeError: The necessary overload for constant was not found
+
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:134: TypeError
+______________ RandomBehaviorTest.test_beta_tf_data_compatibility ______________
+
+self = <keras.src.random.random_test.RandomBehaviorTest testMethod=test_beta_tf_data_compatibility>
+
+    def test_beta_tf_data_compatibility(self):
+        import tensorflow as tf
+    
+        from keras.src.layers.preprocessing.tf_data_layer import TFDataLayer
+        from keras.src.random.seed_generator import SeedGenerator
+    
+        class BetaLayer(TFDataLayer):
+            def __init__(self, seed=None, **kwargs):
+                super().__init__(**kwargs)
+                self.seed = seed
+                self.generator = SeedGenerator(seed)
+    
+            def compute_output_shape(self, input_shape):
+                return input_shape
+    
+            def call(self, inputs):
+                seed_generator = self._get_seed_generator(self.backend._backend)
+                noise = self.backend.random.beta(
+                    self.backend.shape(inputs),
+                    alpha=0.5,
+                    beta=0.5,
+                    seed=seed_generator,
+                )
+                inputs = inputs + noise
+                return inputs
+    
+        layer = BetaLayer()
+        input_data = np.random.random([2, 4, 4, 3])
+        ds = tf.data.Dataset.from_tensor_slices(input_data).batch(2).map(layer)
+        for output in ds.take(1):
+>           output = ops.convert_to_numpy(output)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:356: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/ops/core.py:987: in convert_to_numpy
+    return backend.convert_to_numpy(x)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = <tf.Tensor: shape=(2, 4, 4, 3), dtype=float32, numpy=
+array([[[[0.68007237, 1.7384965 , 1.16834   ],
+         [0.99287...796 ],
+         [1.8912406 , 0.75820506, 0.72537804],
+         [0.5374181 , 0.74902445, 0.8766398 ]]]], dtype=float32)>
+
+    def convert_to_numpy(x):
+        if isinstance(x, np.ndarray):
+            return x
+        elif isinstance(x, (int, float)):
+            return np.array(x)
+        elif isinstance(x, (list, tuple)):
+            x_new = []
+            for elem in x:
+                x_new.append(convert_to_numpy(elem))
+            return np.array(x_new)
+        elif np.isscalar(x):
+            return x
+        elif isinstance(x, ov.Tensor):
+            return x.data
+        elif x is None:
+            return x
+        elif isinstance(x, KerasVariable):
+            if isinstance(x.value, OpenVINOKerasTensor):
+                x = x.value
+            else:
+                return x.value.data
+>       assert isinstance(x, OpenVINOKerasTensor), (
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "unsupported type {} for `convert_to_numpy` in openvino backend".format(
+                type(x)
+            )
+        )
+E       AssertionError: unsupported type <class 'tensorflow.python.framework.ops.EagerTensor'> for `convert_to_numpy` in openvino backend
+
+keras/src/backend/openvino/core.py:671: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2025-07-01 23:26:40.626133: W tensorflow/core/common_runtime/gpu/gpu_bfc_allocator.cc:47] Overriding orig_value setting because the TF_FORCE_GPU_ALLOW_GROWTH environment variable is set. Original config value was 0.
+I0000 00:00:1751401600.627125   65886 gpu_device.cc:2022] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 4143 MB memory:  -> device: 0, name: NVIDIA GeForce RTX 4050 Laptop GPU, pci bus id: 0000:01:00.0, compute capability: 8.9
+______________________ RandomDTypeTest.test_beta_bfloat16 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_beta_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_beta(self, dtype):
+>       res = random.beta((2, 3), 2.0, 3.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:508: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, beta = 3.0, dtype = 'bfloat16', seed = None
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+______________________ RandomDTypeTest.test_beta_float16 _______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_beta_float16>
+dtype = 'float16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_beta(self, dtype):
+>       res = random.beta((2, 3), 2.0, 3.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:508: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, beta = 3.0, dtype = 'float16', seed = None
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+______________________ RandomDTypeTest.test_beta_float32 _______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_beta_float32>
+dtype = 'float32'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_beta(self, dtype):
+>       res = random.beta((2, 3), 2.0, 3.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:508: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, beta = 3.0, dtype = 'float32', seed = None
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+______________________ RandomDTypeTest.test_beta_float64 _______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_beta_float64>
+dtype = 'float64'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_beta(self, dtype):
+>       res = random.beta((2, 3), 2.0, 3.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:508: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:343: in beta
+    return backend.random.beta(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, beta = 3.0, dtype = 'float64', seed = None
+
+    def beta(shape, alpha, beta, dtype=None, seed=None):
+>       raise NotImplementedError("`beta` is not supported with openvino backend")
+E       NotImplementedError: `beta` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:155: NotImplementedError
+____________________ RandomDTypeTest.test_binomial_bfloat16 ____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_binomial_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_binomial(self, dtype):
+>       res = random.binomial((2,), 1e5, 0.5, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:503: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2,), counts = 100000.0, probabilities = 0.5, dtype = 'bfloat16'
+seed = None
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+____________________ RandomDTypeTest.test_binomial_float16 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_binomial_float16>
+dtype = 'float16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_binomial(self, dtype):
+>       res = random.binomial((2,), 1e5, 0.5, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:503: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2,), counts = 100000.0, probabilities = 0.5, dtype = 'float16'
+seed = None
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+____________________ RandomDTypeTest.test_binomial_float32 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_binomial_float32>
+dtype = 'float32'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_binomial(self, dtype):
+>       res = random.binomial((2,), 1e5, 0.5, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:503: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2,), counts = 100000.0, probabilities = 0.5, dtype = 'float32'
+seed = None
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+____________________ RandomDTypeTest.test_binomial_float64 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_binomial_float64>
+dtype = 'float64'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_binomial(self, dtype):
+>       res = random.binomial((2,), 1e5, 0.5, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:503: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:303: in binomial
+    return backend.random.binomial(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2,), counts = 100000.0, probabilities = 0.5, dtype = 'float64'
+seed = None
+
+    def binomial(shape, counts, probabilities, dtype=None, seed=None):
+>       raise NotImplementedError(
+            "`binomial` is not supported with openvino backend"
+        )
+E       NotImplementedError: `binomial` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:149: NotImplementedError
+____________________ RandomDTypeTest.test_dropout_bfloat16 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_dropout_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_dropout(self, dtype):
+        x = ops.ones((3, 5), dtype=dtype)
+>       res = random.dropout(x, rate=0.8, seed=0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:493: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:213: in dropout
+    return backend.random.dropout(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7bcc35aa04a0>
+rate = 0.8, noise_shape = None, seed = 0
+
+    def dropout(inputs, rate, noise_shape=None, seed=None):
+>       raise NotImplementedError(
+            "`dropout` is not supported with openvino backend"
+        )
+E       NotImplementedError: `dropout` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:133: NotImplementedError
+_____________________ RandomDTypeTest.test_dropout_float16 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_dropout_float16>
+dtype = 'float16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_dropout(self, dtype):
+        x = ops.ones((3, 5), dtype=dtype)
+>       res = random.dropout(x, rate=0.8, seed=0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:493: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:213: in dropout
+    return backend.random.dropout(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7bcc356da660>
+rate = 0.8, noise_shape = None, seed = 0
+
+    def dropout(inputs, rate, noise_shape=None, seed=None):
+>       raise NotImplementedError(
+            "`dropout` is not supported with openvino backend"
+        )
+E       NotImplementedError: `dropout` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:133: NotImplementedError
+_____________________ RandomDTypeTest.test_dropout_float32 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_dropout_float32>
+dtype = 'float32'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_dropout(self, dtype):
+        x = ops.ones((3, 5), dtype=dtype)
+>       res = random.dropout(x, rate=0.8, seed=0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:493: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:213: in dropout
+    return backend.random.dropout(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7bcc356da000>
+rate = 0.8, noise_shape = None, seed = 0
+
+    def dropout(inputs, rate, noise_shape=None, seed=None):
+>       raise NotImplementedError(
+            "`dropout` is not supported with openvino backend"
+        )
+E       NotImplementedError: `dropout` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:133: NotImplementedError
+_____________________ RandomDTypeTest.test_dropout_float64 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_dropout_float64>
+dtype = 'float64'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_dropout(self, dtype):
+        x = ops.ones((3, 5), dtype=dtype)
+>       res = random.dropout(x, rate=0.8, seed=0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:493: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:213: in dropout
+    return backend.random.dropout(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+inputs = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x7bcc35aa5d00>
+rate = 0.8, noise_shape = None, seed = 0
+
+    def dropout(inputs, rate, noise_shape=None, seed=None):
+>       raise NotImplementedError(
+            "`dropout` is not supported with openvino backend"
+        )
+E       NotImplementedError: `dropout` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:133: NotImplementedError
+_____________________ RandomDTypeTest.test_gamma_bfloat16 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_gamma_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_gamma(self, dtype):
+>       res = random.gamma((2, 3), 2.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:498: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, dtype = 'bfloat16', seed = None
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+______________________ RandomDTypeTest.test_gamma_float16 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_gamma_float16>
+dtype = 'float16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_gamma(self, dtype):
+>       res = random.gamma((2, 3), 2.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:498: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, dtype = 'float16', seed = None
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+______________________ RandomDTypeTest.test_gamma_float32 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_gamma_float32>
+dtype = 'float32'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_gamma(self, dtype):
+>       res = random.gamma((2, 3), 2.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:498: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, dtype = 'float32', seed = None
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+______________________ RandomDTypeTest.test_gamma_float64 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_gamma_float64>
+dtype = 'float64'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_gamma(self, dtype):
+>       res = random.gamma((2, 3), 2.0, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:498: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:268: in gamma
+    return backend.random.gamma(shape, alpha=alpha, dtype=dtype, seed=seed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), alpha = 2.0, dtype = 'float64', seed = None
+
+    def gamma(shape, alpha, dtype=None, seed=None):
+>       raise NotImplementedError("`gamma` is not supported with openvino backend")
+E       NotImplementedError: `gamma` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:145: NotImplementedError
+_____________________ RandomDTypeTest.test_normal_bfloat16 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_normal_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_normal(self, dtype):
+>       res = random.normal((2, 3), dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:466: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:32: in normal
+    return backend.random.normal(
+keras/src/backend/openvino/random.py:20: in normal
+    return OpenVINOKerasTensor(ov_opset.constant(normal_const).output(0))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:137: in __call__
+    return function(*args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:30: in wrapper
+    node = node_factory_function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = array([[-0.527344, -0.34375, 0.621094],
+       [0.578125, 0.361328, 2.07812]], dtype=bfloat16)
+dtype = None, name = None
+
+    @overloading(Union[NumericData, np.number, bool, np.bool_, list], Union[NumericType, Type], Optional[str], bool)  # type: ignore
+    @nameable_op
+    def constant(
+        value: Union[NumericData, np.number, bool, np.bool_, list],
+        dtype: Union[NumericType, Type] = None,
+        name: Optional[str] = None,
+        *,
+        shared_memory: bool = False,
+    ) -> Constant:
+        """Create a Constant node from provided value.
+    
+        :param value: One of: array of values or scalar to initialize node with.
+        :param dtype: The data type of provided data.
+                      If dtype does not match, data will be converted.
+                      Note: disables sharing of the memory when convertion occurs.
+        :param name: Optional name for output node.
+        :param shared_memory: keyword-only argument.
+                              If `True`, this Constant's memory is being shared with a host,
+                              that means the responsibility of keeping host memory is
+                              on the side of a user. Any action performed on the host
+                              memory is reflected on this Constant's memory!
+                              If `False`, data is being copied to this Constant.
+                              Requires data to be C_CONTIGUOUS if `True`.
+                              Disabled by default if:
+                              - value is a scalar.
+                              - dtype is one of: Type.u1, Type.i4, Type.u4, Type.nf4, Type.bf16.
+                              - dtype force conversion of data.
+        :return: The Constant node initialized with provided data.
+        """
+    
+        def display_shared_memory_warning(warning_message: str) -> None:
+            if shared_memory:
+                log.warning(f"{warning_message}. Memory sharing is disabled by default. Set shared_memory=False to hide this warning.")
+    
+        if isinstance(value, np.ndarray):
+            _value, _shared_memory = value, shared_memory
+        else:
+            _value, _shared_memory = np.array(value), False
+            display_shared_memory_warning(f"Converting scalar to corresponding type of {_value.dtype}")
+        # Handle type casting, when dtype is not None:
+        if dtype:
+            # Expect packed data, use different constructor to handle it correctly:
+            if dtype in [Type.u1, Type.i4, Type.u4, Type.nf4, Type.f4e2m1]:
+                display_shared_memory_warning(f"Constant initialized with packed type of {dtype}")
+                return Constant(dtype, Shape(_value.shape), _value.flatten().tolist())
+            elif dtype in [Type.bf16, Type.f8e8m0, Type.f8e4m3, Type.f8e5m2]:
+                display_shared_memory_warning(f"Constant initialized with OpenVINO custom {dtype}")
+                return Constant(dtype, Shape(_value.shape), _value.flatten().tolist())
+            # General use-case for all other types:
+            else:
+                _dtype = dtype.to_dtype() if isinstance(dtype, Type) else dtype
+                if _dtype is int:
+                    display_shared_memory_warning("Converting scalar type of undefined bitwidth to 32-bit integer")
+                    _value, _shared_memory = _value.astype(np.int32), False
+                elif _dtype is float:
+                    display_shared_memory_warning("Converting scalar type of undefined bitwidth to 32-bit float")
+                    _value, _shared_memory = _value.astype(np.float32), False
+                elif _dtype is bool:
+                    display_shared_memory_warning("Converting bool type to numpy bool")
+                    _value, _shared_memory = _value.astype(np.bool_), False
+                else:
+                    if _dtype != _value.dtype:
+                        display_shared_memory_warning(f"Converting value of {_value.dtype} to {_dtype}")
+                        _value, _shared_memory = _value.astype(_dtype), False
+        # Create Constant itself:
+>       return Constant(_value, shared_memory=_shared_memory)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: Check 'ov_type_it != dtype_map.end()' failed at src/bindings/python/src/pyopenvino/core/common.cpp:89:
+E       Unsupported data type: bfloat16
+
+../env/lib/python3.12/site-packages/openvino/opset13/ops.py:339: RuntimeError
+______________________ RandomDTypeTest.test_randint_int16 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_int16>
+dtype = 'int16'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'int16', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+______________________ RandomDTypeTest.test_randint_int32 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_int32>
+dtype = 'int32'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'int32', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+______________________ RandomDTypeTest.test_randint_int64 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_int64>
+dtype = 'int64'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'int64', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+______________________ RandomDTypeTest.test_randint_int8 _______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_int8>
+dtype = 'int8'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'int8', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+_____________________ RandomDTypeTest.test_randint_uint16 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_uint16>
+dtype = 'uint16'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'uint16', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+_____________________ RandomDTypeTest.test_randint_uint32 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_uint32>
+dtype = 'uint32'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'uint32', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+______________________ RandomDTypeTest.test_randint_uint8 ______________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_randint_uint8>
+dtype = 'uint8'
+
+    @parameterized.named_parameters(named_product(dtype=INT_DTYPES))
+    def test_randint(self, dtype):
+>       res = random.randint((2, 3), 0, 10, dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:482: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:170: in randint
+    return backend.random.randint(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+shape = (2, 3), minval = 0, maxval = 10, dtype = 'uint8', seed = None
+
+    def randint(shape, minval, maxval, dtype="int32", seed=None):
+>       raise NotImplementedError(
+            "`randint` is not supported with openvino backend"
+        )
+E       NotImplementedError: `randint` is not supported with openvino backend
+
+keras/src/backend/openvino/random.py:100: NotImplementedError
+________________ RandomDTypeTest.test_truncated_normal_bfloat16 ________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_truncated_normal_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_truncated_normal(self, dtype):
+>       res = random.truncated_normal((2, 3), dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:487: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:206: in truncated_normal
+    return backend.random.truncated_normal(
+keras/src/backend/openvino/random.py:129: in truncated_normal
+    return OpenVINOKerasTensor(ov_opset.constant(np_array_res).output(0))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:137: in __call__
+    return function(*args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:30: in wrapper
+    node = node_factory_function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = array([[0.828125, -0.964844, -1.4375],
+       [-0.808594, 0.032959, -0.597656]], dtype=bfloat16)
+dtype = None, name = None
+
+    @overloading(Union[NumericData, np.number, bool, np.bool_, list], Union[NumericType, Type], Optional[str], bool)  # type: ignore
+    @nameable_op
+    def constant(
+        value: Union[NumericData, np.number, bool, np.bool_, list],
+        dtype: Union[NumericType, Type] = None,
+        name: Optional[str] = None,
+        *,
+        shared_memory: bool = False,
+    ) -> Constant:
+        """Create a Constant node from provided value.
+    
+        :param value: One of: array of values or scalar to initialize node with.
+        :param dtype: The data type of provided data.
+                      If dtype does not match, data will be converted.
+                      Note: disables sharing of the memory when convertion occurs.
+        :param name: Optional name for output node.
+        :param shared_memory: keyword-only argument.
+                              If `True`, this Constant's memory is being shared with a host,
+                              that means the responsibility of keeping host memory is
+                              on the side of a user. Any action performed on the host
+                              memory is reflected on this Constant's memory!
+                              If `False`, data is being copied to this Constant.
+                              Requires data to be C_CONTIGUOUS if `True`.
+                              Disabled by default if:
+                              - value is a scalar.
+                              - dtype is one of: Type.u1, Type.i4, Type.u4, Type.nf4, Type.bf16.
+                              - dtype force conversion of data.
+        :return: The Constant node initialized with provided data.
+        """
+    
+        def display_shared_memory_warning(warning_message: str) -> None:
+            if shared_memory:
+                log.warning(f"{warning_message}. Memory sharing is disabled by default. Set shared_memory=False to hide this warning.")
+    
+        if isinstance(value, np.ndarray):
+            _value, _shared_memory = value, shared_memory
+        else:
+            _value, _shared_memory = np.array(value), False
+            display_shared_memory_warning(f"Converting scalar to corresponding type of {_value.dtype}")
+        # Handle type casting, when dtype is not None:
+        if dtype:
+            # Expect packed data, use different constructor to handle it correctly:
+            if dtype in [Type.u1, Type.i4, Type.u4, Type.nf4, Type.f4e2m1]:
+                display_shared_memory_warning(f"Constant initialized with packed type of {dtype}")
+                return Constant(dtype, Shape(_value.shape), _value.flatten().tolist())
+            elif dtype in [Type.bf16, Type.f8e8m0, Type.f8e4m3, Type.f8e5m2]:
+                display_shared_memory_warning(f"Constant initialized with OpenVINO custom {dtype}")
+                return Constant(dtype, Shape(_value.shape), _value.flatten().tolist())
+            # General use-case for all other types:
+            else:
+                _dtype = dtype.to_dtype() if isinstance(dtype, Type) else dtype
+                if _dtype is int:
+                    display_shared_memory_warning("Converting scalar type of undefined bitwidth to 32-bit integer")
+                    _value, _shared_memory = _value.astype(np.int32), False
+                elif _dtype is float:
+                    display_shared_memory_warning("Converting scalar type of undefined bitwidth to 32-bit float")
+                    _value, _shared_memory = _value.astype(np.float32), False
+                elif _dtype is bool:
+                    display_shared_memory_warning("Converting bool type to numpy bool")
+                    _value, _shared_memory = _value.astype(np.bool_), False
+                else:
+                    if _dtype != _value.dtype:
+                        display_shared_memory_warning(f"Converting value of {_value.dtype} to {_dtype}")
+                        _value, _shared_memory = _value.astype(_dtype), False
+        # Create Constant itself:
+>       return Constant(_value, shared_memory=_shared_memory)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: Check 'ov_type_it != dtype_map.end()' failed at src/bindings/python/src/pyopenvino/core/common.cpp:89:
+E       Unsupported data type: bfloat16
+
+../env/lib/python3.12/site-packages/openvino/opset13/ops.py:339: RuntimeError
+____________________ RandomDTypeTest.test_uniform_bfloat16 _____________________
+
+self = <keras.src.random.random_test.RandomDTypeTest testMethod=test_uniform_bfloat16>
+dtype = 'bfloat16'
+
+    @parameterized.named_parameters(named_product(dtype=FLOAT_DTYPES))
+    def test_uniform(self, dtype):
+>       res = random.uniform((2, 3), dtype=dtype)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+keras/src/random/random_test.py:477: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+keras/src/random/random.py:126: in uniform
+    return backend.random.uniform(
+keras/src/backend/openvino/random.py:31: in uniform
+    minval_const = ov_opset.constant(minval, dtype=dtype)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:137: in __call__
+    return function(*args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+../env/lib/python3.12/site-packages/openvino/utils/decorators.py:30: in wrapper
+    node = node_factory_function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = 0.0, dtype = 'bfloat16', name = None
+
+    @overloading(Union[NumericData, np.number, bool, np.bool_, list], Union[NumericType, Type], Optional[str], bool)  # type: ignore
+    @nameable_op
+    def constant(
+        value: Union[NumericData, np.number, bool, np.bool_, list],
+        dtype: Union[NumericType, Type] = None,
+        name: Optional[str] = None,
+        *,
+        shared_memory: bool = False,
+    ) -> Constant:
+        """Create a Constant node from provided value.
+    
+        :param value: One of: array of values or scalar to initialize node with.
+        :param dtype: The data type of provided data.
+                      If dtype does not match, data will be converted.
+                      Note: disables sharing of the memory when convertion occurs.
+        :param name: Optional name for output node.
+        :param shared_memory: keyword-only argument.
+                              If `True`, this Constant's memory is being shared with a host,
+                              that means the responsibility of keeping host memory is
+                              on the side of a user. Any action performed on the host
+                              memory is reflected on this Constant's memory!
+                              If `False`, data is being copied to this Constant.
+                              Requires data to be C_CONTIGUOUS if `True`.
+                              Disabled by default if:
+                              - value is a scalar.
+                              - dtype is one of: Type.u1, Type.i4, Type.u4, Type.nf4, Type.bf16.
+                              - dtype force conversion of data.
+        :return: The Constant node initialized with provided data.
+        """
+    
+        def display_shared_memory_warning(warning_message: str) -> None:
+            if shared_memory:
+                log.warning(f"{warning_message}. Memory sharing is disabled by default. Set shared_memory=False to hide this warning.")
+    
+        if isinstance(value, np.ndarray):
+            _value, _shared_memory = value, shared_memory
+        else:
+            _value, _shared_memory = np.array(value), False
+            display_shared_memory_warning(f"Converting scalar to corresponding type of {_value.dtype}")
+        # Handle type casting, when dtype is not None:
+        if dtype:
+            # Expect packed data, use different constructor to handle it correctly:
+            if dtype in [Type.u1, Type.i4, Type.u4, Type.nf4, Type.f4e2m1]:
+                display_shared_memory_warning(f"Constant initialized with packed type of {dtype}")
+                return Constant(dtype, Shape(_value.shape), _value.flatten().tolist())
+            elif dtype in [Type.bf16, Type.f8e8m0, Type.f8e4m3, Type.f8e5m2]:
+                display_shared_memory_warning(f"Constant initialized with OpenVINO custom {dtype}")
+                return Constant(dtype, Shape(_value.shape), _value.flatten().tolist())
+            # General use-case for all other types:
+            else:
+                _dtype = dtype.to_dtype() if isinstance(dtype, Type) else dtype
+                if _dtype is int:
+                    display_shared_memory_warning("Converting scalar type of undefined bitwidth to 32-bit integer")
+                    _value, _shared_memory = _value.astype(np.int32), False
+                elif _dtype is float:
+                    display_shared_memory_warning("Converting scalar type of undefined bitwidth to 32-bit float")
+                    _value, _shared_memory = _value.astype(np.float32), False
+                elif _dtype is bool:
+                    display_shared_memory_warning("Converting bool type to numpy bool")
+                    _value, _shared_memory = _value.astype(np.bool_), False
+                else:
+                    if _dtype != _value.dtype:
+                        display_shared_memory_warning(f"Converting value of {_value.dtype} to {_dtype}")
+                        _value, _shared_memory = _value.astype(_dtype), False
+        # Create Constant itself:
+>       return Constant(_value, shared_memory=_shared_memory)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       RuntimeError: Check 'ov_type_it != dtype_map.end()' failed at src/bindings/python/src/pyopenvino/core/common.cpp:89:
+E       Unsupported data type: bfloat16
+
+../env/lib/python3.12/site-packages/openvino/opset13/ops.py:339: RuntimeError
+=============================== warnings summary ===============================
+../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
+../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=65886) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+../env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10: DeprecationWarning: The `openvino.runtime` module is deprecated and will be removed in the 2026.0 release. Please replace `openvino.runtime` with `openvino`.
+    warnings.warn(
+
+../env/lib/python3.12/site-packages/_pytest/config/__init__.py:1474
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/_pytest/config/__init__.py:1474: PytestConfigWarning: Unknown config option: env
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+keras/src/random/random_test.py::RandomCorrectnessTest::test_beta0
+  /home/mohamed-ashraf/Desktop/GSoC2025/env/lib/python3.12/site-packages/google/protobuf/internal/well_known_types.py:91: DeprecationWarning: datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+    _EPOCH_DATETIME_NAIVE = datetime.datetime.utcfromtimestamp(0)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_beta0 - N...
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_beta1 - N...
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_beta2 - N...
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_binomial0
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_binomial1
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_binomial2
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_dropout
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_dropout_noise_shape
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_gamma0 - ...
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_gamma1 - ...
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_gamma2 - ...
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_randint0
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_randint1
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_randint2
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_randint3
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_randint4
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_shuffle
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal0
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal1
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal2
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal3
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal4
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_truncated_normal5
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform0
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform1
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform2
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform3
+FAILED keras/src/random/random_test.py::RandomCorrectnessTest::test_uniform4
+FAILED keras/src/random/random_test.py::RandomBehaviorTest::test_beta_tf_data_compatibility
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_beta_bfloat16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_beta_float16 - ...
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_beta_float32 - ...
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_beta_float64 - ...
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_binomial_bfloat16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_binomial_float16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_binomial_float32
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_binomial_float64
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_dropout_bfloat16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_dropout_float16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_dropout_float32
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_dropout_float64
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_gamma_bfloat16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_gamma_float16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_gamma_float32
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_gamma_float64
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_normal_bfloat16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_int16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_int32
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_int64
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_int8 - ...
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_uint16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_uint32
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_randint_uint8
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_truncated_normal_bfloat16
+FAILED keras/src/random/random_test.py::RandomDTypeTest::test_uniform_bfloat16
+============= 55 failed, 29 passed, 4 skipped, 5 warnings in 5.59s =============

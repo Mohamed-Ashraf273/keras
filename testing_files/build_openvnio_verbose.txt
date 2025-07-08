@@ -1,0 +1,87 @@
+[  0%] [cpplint] compile_tool_cpplint
+[  0%] [cpplint] openvino_offline_transformations_cpplint
+[  0%] Built target compile_tool_cpplint
+[  0%] Built target openvino_offline_transformations_cpplint
+[  0%] [cpplint] openvino_lp_transformations_cpplint
+[  1%] [cpplint] openvino_auto_plugin_cpplint
+[  2%] Built target openvino_lp_transformations_cpplint
+[  2%] [cpplint] openvino_snippets_cpplint
+[  2%] Built target openvino_auto_plugin_cpplint
+[  6%] Built target openvino_snippets_cpplint
+[  6%] [cpplint] openvino_intel_gpu_runtime_cpplint
+[  6%] [cpplint] openvino_intel_gpu_plugin_cpplint
+[  7%] Built target openvino_intel_gpu_runtime_cpplint
+[ 10%] Built target openvino_intel_gpu_plugin_cpplint
+[ 10%] [cpplint] openvino_intel_gpu_cm_obj_cpplint
+[ 10%] [cpplint] openvino_intel_gpu_common_obj_cpplint
+[ 10%] Built target openvino_intel_gpu_cm_obj_cpplint
+[ 10%] Built target openvino_intel_gpu_common_obj_cpplint
+[ 10%] [cpplint] openvino_intel_gpu_graph_cpplint
+[ 15%] Built target openvino_intel_gpu_graph_cpplint
+[ 16%] [cpplint] openvino_intel_gpu_cpu_obj_cpplint
+[ 16%] Built target openvino_intel_gpu_cpu_obj_cpplint
+[ 16%] [cpplint] openvino_intel_gpu_ocl_obj_cpplint
+[ 18%] Built target openvino_intel_gpu_ocl_obj_cpplint
+[ 18%] [cpplint] openvino_intel_gpu_ocl_v2_obj_cpplint
+[ 18%] Built target openvino_intel_gpu_ocl_v2_obj_cpplint
+[ 18%] [cpplint] openvino_intel_gpu_onednn_obj_cpplint
+[ 18%] Built target openvino_intel_gpu_onednn_obj_cpplint
+[ 18%] [cpplint] openvino_intel_gpu_kernels_cpplint
+[ 18%] [cpplint] openvino_intel_npu_plugin_cpplint
+[ 30%] Built target openvino_intel_gpu_kernels_cpplint
+[ 31%] Built target openvino_intel_npu_plugin_cpplint
+[ 31%] Built target pugixml-static
+[ 31%] Built target _ov_plugins_hpp
+[ 31%] Built target openvino_protobuf_shutdown
+[ 31%] Built target openvino_shape_inference
+[ 31%] Built target snappy
+[ 32%] Built target libprotobuf-lite
+[ 32%] Built target onednn_gpu_build
+[ 33%] Built target flatc
+[ 33%] Built target OpenCL
+[ 34%] Built target mlas
+[ 35%] Built target libprotobuf
+[ 35%] Copying  /home/mohamed-ashraf/Desktop/GSoC2025/openvino/build/src/plugins/intel_gpu/src/graph/impls/cm/codegen/cache/cm_kernels
+[ 35%] Copying  /home/mohamed-ashraf/Desktop/GSoC2025/openvino/build/src/plugins/intel_gpu/src/graph/impls/cm/codegen/cache/cm_kernels
+[ 35%] Built target run_cm_codegen
+[ 35%] Built target openvino_intel_gpu_common_obj
+[ 35%] Built target run_ocl_codegen
+[ 35%] Built target openvino_intel_gpu_cpu_obj
+[ 35%] Built target level_zero_utils
+[ 35%] Built target gflags_nothreads_static
+processing test_kernel.cl
+[ 35%] Built target format_reader
+[ 35%] Built target ie_samples_util_c
+[ 35%] Built target cpplint_all
+[ 35%] Built target opencv_c_wrapper
+[ 35%] Built target run_codegen_test
+[ 35%] Built target openvino_util
+[ 36%] Built target openvino_intel_gpu_onednn_obj
+[ 36%] Built target openvino_intel_gpu_cm_obj
+[ 36%] Built target openvino_intel_gpu_ocl_v2_obj
+[ 36%] Built target openvino_itt
+[ 37%] Built target libprotoc
+[ 37%] Built target ze_loader
+[ 38%] Built target openvino_intel_gpu_ocl_obj
+[ 38%] Built target openvino_frontend_common_obj
+[ 38%] Built target openvino_reference
+[ 39%] Built target openvino_runtime_obj
+[ 39%] Built target openvino_proxy_plugin_obj
+[ 39%] Built target protoc
+[ 39%] Built target openvino_common_translators
+[ 40%] Built target openvino_lp_transformations_obj
+[ 41%] Built target dnnl_common
+[ 43%] Built target openvino_docs_snippets
+[ 43%] Built target openvino_core_obj_version
+[ 43%] Built target gen_onnx_proto
+[ 44%] Built target dnnl_cpu
+[ 47%] Built target dnnl_cpu_x64
+[ 47%] Built target gen_onnx_data_proto
+[ 47%] Built target gen_onnx_operators_proto
+[ 47%] Built target dnnl
+[ 47%] Built target onnx_proto
+[ 49%] Built target openvino_tensorflow_common
+[ 49%] Built target openvino_intel_cpu_plugin_obj_version
+[ 50%] Built target onnx
+[ 55%] Built target openvino_core_obj
+[ 55%] Building CXX object src/common/transformations/CMakeFiles/openvino_transformations_obj.dir/src/transformations/common_optimizations/common_optimizations.cpp.o
