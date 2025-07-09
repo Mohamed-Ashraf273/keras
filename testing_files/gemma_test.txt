@@ -19,48 +19,13 @@ keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_mult
 keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_saved_model SKIPPED [ 73%]
 keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_score_layer_intercept_fn_exfiltration PASSED [ 80%]
 keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_score_logits PASSED [ 86%]
-keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_score_loss FAILED [ 93%]
+keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_score_loss SKIPPED [ 93%]
 keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_session PASSED [100%]
 
-=================================== FAILURES ===================================
-______________________ GemmaCausalLMTest.test_score_loss _______________________
-
-self = <keras_hub.src.models.gemma.gemma_causal_lm_test.GemmaCausalLMTest testMethod=test_score_loss>
-
-    def test_score_loss(self):
-        # Setup prompts, models, and associated expected shapes.
-        prompts = ["the quick brown fox", "the quick brown fox"]
-        causal_lm = GemmaCausalLM(**self.init_kwargs)
-        expected_score_shape = (2, 8)
-    
-        # Preprocess prompts to get tokenized representations and padding masks.
-        preprocessed_prompts = causal_lm.preprocessor.generate_preprocess(
-            prompts
-        )
-        token_ids = preprocessed_prompts["token_ids"]
-        padding_mask = preprocessed_prompts["padding_mask"]
->       target_ids = keras.ops.roll(token_ids, shift=-1, axis=1)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-keras_hub/src/models/gemma/gemma_causal_lm_test.py:256: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-../keras/keras/src/ops/numpy.py:5189: in roll
-    return backend.numpy.roll(x, shift, axis=axis)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-x = <keras.src.backend.openvino.core.OpenVINOKerasTensor object at 0x78f59b920e30>
-shift = -1, axis = 1
-
-    def roll(x, shift, axis=None):
->       raise NotImplementedError("`roll` is not supported with openvino backend")
-E       NotImplementedError: `roll` is not supported with openvino backend
-
-../keras/keras/src/backend/openvino/numpy.py:1382: NotImplementedError
 =============================== warnings summary ===============================
 ../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
 ../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
-  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=124605) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=6301) is multi-threaded, use of fork() may lead to deadlocks in the child.
     self.pid = os.fork()
 
 ../env/lib/python3.12/site-packages/openvino/runtime/__init__.py:10
@@ -81,6 +46,4 @@ keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_sess
     return self.run(*args, **kwds)
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-=========================== short test summary info ============================
-FAILED keras_hub/src/models/gemma/gemma_causal_lm_test.py::GemmaCausalLMTest::test_score_loss
-============== 1 failed, 8 passed, 6 skipped, 6 warnings in 8.78s ==============
+================== 8 passed, 7 skipped, 6 warnings in 14.10s ===================
