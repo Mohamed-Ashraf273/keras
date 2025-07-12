@@ -810,7 +810,41 @@ def expm1(x):
 
 
 def flip(x, axis=None):
-    raise NotImplementedError("`flip` is not supported with openvino backend")
+    x = get_ov_output(x)
+    rank = x.get_partial_shape().rank.get_length()
+    if rank == 0:
+        return OpenVINOKerasTensor(x)
+
+    if axis is None:
+        axis = list(range(rank))
+    elif isinstance(axis, int):
+        axis = [axis]
+    else:
+        axis = list(axis)
+
+    strides = [1] * rank
+    for ax in axis:
+        strides[ax] = -1
+
+    begin_mask = [1] * rank
+    end_mask = [1] * rank
+
+    begin = [0] * rank
+    end = [0] * rank
+
+    begin_node = ov_opset.constant(begin, dtype=Type.i64)
+    end_node = ov_opset.constant(end, dtype=Type.i64)
+    strides_node = ov_opset.constant(strides, dtype=Type.i64)
+
+    flipped = ov_opset.strided_slice(
+        x,
+        begin_node,
+        end_node,
+        strides_node,
+        begin_mask=begin_mask,
+        end_mask=end_mask,
+    )
+    return OpenVINOKerasTensor(flipped.output(0))
 
 
 def floor(x):
