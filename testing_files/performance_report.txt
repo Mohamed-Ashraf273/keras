@@ -1,0 +1,281 @@
+Total params: 354,823,168 (1.32 GB)
+Trainable params: 354,823,168 (1.32 GB)
+Non-trainable params: 0 (0.00 B)
+
+
+
+=========================================================================================================================
+FIXED MEMORY TEST: KERAS GPT2 + **OPENVINO**
+=========================================================================================================================
+[STAGE] 0_INITIAL: 783.79 MB (swap: 0.00 MB) - Initial state after imports
+
+>>> Loading GPT2 model from preset...
+[STAGE] 1_MODEL_LOADED: 2339.53 MB (swap: 0.00 MB) - gpt2_medium_en model loaded (7.3s)
+[STAGE] 2_BEFORE_INFERENCE: 2339.53 MB (swap: 0.00 MB) - Before first inference
+
+>>> Running first inference (compilation + execution)...
+    ⏳ Converting Keras -> OpenVINO and compiling...
+[STAGE] 3_FIRST_INFERENCE: 3558.10 MB (swap: 0.00 MB) - First inference completed via generate (5.8s)
+
+>>> Second inference (no compilation)...
+[STAGE] 4_SECOND_INFERENCE: 3555.19 MB (swap: 0.00 MB) - Second inference (1.7s)
+[STAGE] 5_FINAL: 3555.19 MB (swap: 0.00 MB) - Final state
+
+================================================================================
+PERFORMANCE RESULTS
+================================================================================
+✅ Generated text: 'Hello everyone,
+
+I have been working'
+✅ Second generation: 'Testimony before the House Committee on Oversight and'
+Backend: openvino
+First inference latency: 5.81s
+Second inference latency: 1.669s
+Throughput: 1.03 tokens/sec
+Speedup: 3.5x
+
+📊 DETAILED MEMORY ANALYSIS:
++---------------------+------------+-------------+--------------+---------------+
+| STAGE               |   RAM (MB) | SWAP (MB)   | RAM CHANGE   | SWAP CHANGE   |
++=====================+============+=============+==============+===============+
+| Initial             |      783.8 | 0.0         | -            | -             |
++---------------------+------------+-------------+--------------+---------------+
+| After model load    |     2339.5 | 0.0         | +1555.7      | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Before inference    |     2339.5 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 1st inference |     3558.1 | 0.0         | +1218.6      | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 2nd inference |     3555.2 | 0.0         | -2.9         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Final               |     3555.2 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Peak recorded       |     3576.6 | -           | +2792.8      | -             |
++---------------------+------------+-------------+--------------+---------------+
+
+🔍 MAIN MEMORY CONSUMERS:
+   📚 Model loading:         +1555.7 MB RAM      +0.0 MB swap  (56.1% of total)
+   ⚡ Compilation/inference:  +1218.6 MB RAM      +0.0 MB swap  (44.0% of total)
+
+📈 SUMMARY:
+   💾 Total RAM growth:      +2771.4 MB
+   💿 Total swap change:        +0.0 MB
+   📊 Peak RAM consumption:  +2792.8 MB above initial
+   🔥 Highest RAM recorded: 3576.6 MB
+
+🎯 MEMORY HEALTH CHECK:
+   ❌ CRITICAL: RAM usage 2793 MB is very high (target <1GB)
+   ✅ GOOD: Low swap usage 0 MB
+
+🎯 Test completed: {'success': True, 'model_loading_mb': 1555.73828125, 'compilation_mb': 1218.56640625, 'total_mb': 2771.3984375, 'peak_mb': 2792.765625}
+
+
+
+
+
+=========================================================================================================================
+FIXED MEMORY TEST: KERAS GPT2 + **TENSORFLOW**
+=========================================================================================================================
+[STAGE] 0_INITIAL: 771.87 MB (swap: 0.00 MB) - Initial state after imports
+
+>>> Loading GPT2 model from preset...
+[STAGE] 1_MODEL_LOADED: 2528.74 MB (swap: 0.00 MB) - gpt2_medium_en model loaded (4.5s)
+[STAGE] 2_BEFORE_INFERENCE: 2528.74 MB (swap: 0.00 MB) - Before first inference
+
+>>> Running first inference (compilation + execution)...
+    ⏳ Converting Keras -> TENSORFLOW and compiling...
+
+[STAGE] 3_FIRST_INFERENCE: 2780.06 MB (swap: 0.00 MB) - First inference completed via generate (6.6s)
+
+>>> Second inference (no compilation)...
+[STAGE] 4_SECOND_INFERENCE: 2719.18 MB (swap: 0.00 MB) - Second inference (1.2s)
+[STAGE] 5_FINAL: 2719.18 MB (swap: 0.00 MB) - Final state
+
+================================================================================
+PERFORMANCE RESULTS
+================================================================================
+✅ Generated text: 'Hello,
+
+I am a user of'
+✅ Second generation: 'Testimony from former President Clinton
+
+"'
+Backend: tensorflow
+First inference latency: 6.57s
+Second inference latency: 1.245s
+Throughput: 0.91 tokens/sec
+Speedup: 5.3x
+
+📊 DETAILED MEMORY ANALYSIS:
++---------------------+------------+-------------+--------------+---------------+
+| STAGE               |   RAM (MB) | SWAP (MB)   | RAM CHANGE   | SWAP CHANGE   |
++=====================+============+=============+==============+===============+
+| Initial             |      771.9 | 0.0         | -            | -             |
++---------------------+------------+-------------+--------------+---------------+
+| After model load    |     2528.7 | 0.0         | +1756.9      | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Before inference    |     2528.7 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 1st inference |     2780.1 | 0.0         | +251.3       | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 2nd inference |     2719.2 | 0.0         | -60.9        | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Final               |     2719.2 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Peak recorded       |     2780.1 | -           | +2008.2      | -             |
++---------------------+------------+-------------+--------------+---------------+
+
+🔍 MAIN MEMORY CONSUMERS:
+   📚 Model loading:         +1756.9 MB RAM      +0.0 MB swap  (90.2% of total)
+   ⚡ Compilation/inference:   +251.3 MB RAM      +0.0 MB swap  (12.9% of total)
+
+📈 SUMMARY:
+   💾 Total RAM growth:      +1947.3 MB
+   💿 Total swap change:        +0.0 MB
+   📊 Peak RAM consumption:  +2008.2 MB above initial
+   🔥 Highest RAM recorded: 2780.1 MB
+
+🎯 MEMORY HEALTH CHECK:
+   ❌ CRITICAL: RAM usage 2008 MB is very high (target <1GB)
+   ✅ GOOD: Low swap usage 0 MB
+
+🎯 Test completed: {'success': True, 'model_loading_mb': 1756.8671875, 'compilation_mb': 251.32421875, 'total_mb': 1947.3046875, 'peak_mb': 2008.19140625}
+
+
+
+
+
+=========================================================================================================================
+FIXED MEMORY TEST: KERAS GPT2 + **JAX**
+=========================================================================================================================
+[STAGE] 0_INITIAL: 776.53 MB (swap: 0.00 MB) - Initial state after imports
+
+>>> Loading GPT2 model from preset...
+[STAGE] 1_MODEL_LOADED: 3593.21 MB (swap: 0.00 MB) - gpt2_medium_en model loaded (6.2s)
+[STAGE] 2_BEFORE_INFERENCE: 3593.21 MB (swap: 0.00 MB) - Before first inference
+
+>>> Running first inference (compilation + execution)...
+    ⏳ Converting Keras -> JAX and compiling...
+[STAGE] 3_FIRST_INFERENCE: 3811.04 MB (swap: 0.00 MB) - First inference completed via generate (5.5s)
+
+>>> Second inference (no compilation)...
+[STAGE] 4_SECOND_INFERENCE: 2512.37 MB (swap: 0.00 MB) - Second inference (1.7s)
+[STAGE] 5_FINAL: 2512.37 MB (swap: 0.00 MB) - Final state
+
+================================================================================
+PERFORMANCE RESULTS
+================================================================================
+✅ Generated text: 'Hello!
+
+I'm a big fan'
+✅ Second generation: 'Testimonials: We are happy to have'
+Backend: jax
+First inference latency: 5.53s
+Second inference latency: 1.675s
+Throughput: 0.90 tokens/sec
+Speedup: 3.3x
+
+📊 DETAILED MEMORY ANALYSIS:
++---------------------+------------+-------------+--------------+---------------+
+| STAGE               |   RAM (MB) | SWAP (MB)   | RAM CHANGE   | SWAP CHANGE   |
++=====================+============+=============+==============+===============+
+| Initial             |      776.5 | 0.0         | -            | -             |
++---------------------+------------+-------------+--------------+---------------+
+| After model load    |     3593.2 | 0.0         | +2816.7      | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Before inference    |     3593.2 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 1st inference |       3811 | 0.0         | +217.8       | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 2nd inference |     2512.4 | 0.0         | -1298.7      | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Final               |     2512.4 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Peak recorded       |       3811 | -           | +3034.5      | -             |
++---------------------+------------+-------------+--------------+---------------+
+
+🔍 MAIN MEMORY CONSUMERS:
+   📚 Model loading:         +2816.7 MB RAM      +0.0 MB swap  (162.3% of total)
+   ⚡ Compilation/inference:   +217.8 MB RAM      +0.0 MB swap  (12.5% of total)
+
+📈 SUMMARY:
+   💾 Total RAM growth:      +1735.8 MB
+   💿 Total swap change:        +0.0 MB
+   📊 Peak RAM consumption:  +3034.5 MB above initial
+   🔥 Highest RAM recorded: 3811.0 MB
+
+🎯 MEMORY HEALTH CHECK:
+   ❌ CRITICAL: RAM usage 3035 MB is very high (target <1GB)
+   ✅ GOOD: Low swap usage 0 MB
+
+🎯 Test completed: {'success': True, 'model_loading_mb': 2816.6796875, 'compilation_mb': 217.83203125, 'total_mb': 1735.84375, 'peak_mb': 3034.51171875}
+
+
+
+
+
+=========================================================================================================================
+FIXED MEMORY TEST: KERAS GPT2 + **TORCH**
+=========================================================================================================================
+[STAGE] 0_INITIAL: 987.30 MB (swap: 0.00 MB) - Initial state after imports
+
+>>> Loading GPT2 model from preset...
+[STAGE] 1_MODEL_LOADED: 2396.23 MB (swap: 0.00 MB) - gpt2_medium_en model loaded (4.5s)
+[STAGE] 2_BEFORE_INFERENCE: 2396.23 MB (swap: 0.00 MB) - Before first inference
+
+>>> Running first inference (compilation + execution)...
+    ⏳ Converting Keras -> TORCH and compiling...
+[STAGE] 3_FIRST_INFERENCE: 2439.91 MB (swap: 0.00 MB) - First inference completed via generate (2.0s)
+
+>>> Second inference (no compilation)...
+[STAGE] 4_SECOND_INFERENCE: 2443.87 MB (swap: 0.00 MB) - Second inference (1.7s)
+[STAGE] 5_FINAL: 2443.87 MB (swap: 0.00 MB) - Final state
+
+================================================================================
+PERFORMANCE RESULTS
+================================================================================
+✅ Generated text: 'Hello! I'm a newbie to the'
+✅ Second generation: 'Testimonials
+
+
+"I was very'
+Backend: torch
+First inference latency: 2.04s
+Second inference latency: 1.666s
+Throughput: 2.95 tokens/sec
+Speedup: 1.2x
+
+📊 DETAILED MEMORY ANALYSIS:
++---------------------+------------+-------------+--------------+---------------+
+| STAGE               |   RAM (MB) | SWAP (MB)   | RAM CHANGE   | SWAP CHANGE   |
++=====================+============+=============+==============+===============+
+| Initial             |      987.3 | 0.0         | -            | -             |
++---------------------+------------+-------------+--------------+---------------+
+| After model load    |     2396.2 | 0.0         | +1408.9      | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Before inference    |     2396.2 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 1st inference |     2439.9 | 0.0         | +43.7        | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| After 2nd inference |     2443.9 | 0.0         | +4.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Final               |     2443.9 | 0.0         | +0.0         | +0.0          |
++---------------------+------------+-------------+--------------+---------------+
+| Peak recorded       |     2737.8 | -           | +1750.5      | -             |
++---------------------+------------+-------------+--------------+---------------+
+
+🔍 MAIN MEMORY CONSUMERS:
+   📚 Model loading:         +1408.9 MB RAM      +0.0 MB swap  (96.7% of total)
+   ⚡ Compilation/inference:    +43.7 MB RAM      +0.0 MB swap  (3.0% of total)
+
+📈 SUMMARY:
+   💾 Total RAM growth:      +1456.6 MB
+   💿 Total swap change:        +0.0 MB
+   📊 Peak RAM consumption:  +1750.5 MB above initial
+   🔥 Highest RAM recorded: 2737.8 MB
+
+🎯 MEMORY HEALTH CHECK:
+   ⚠️  WARNING: RAM usage 1751 MB is quite high
+   ✅ GOOD: Low swap usage 0 MB
+
+🎯 Test completed: {'success': True, 'model_loading_mb': 1408.9296875, 'compilation_mb': 43.6796875, 'total_mb': 1456.56640625, 'peak_mb': 1750.51953125}
