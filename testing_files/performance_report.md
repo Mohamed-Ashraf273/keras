@@ -1,12 +1,11 @@
 # Memory Optimization Performance Report
-## OpenVINO Backend Constant Sharing Enhancement
 
 ### Executive Summary
 
 During the Google Summer of Code 2025 project focused on enabling OpenVINO backend pipelines for Keras Hub, significant memory consumption issues were identified with the OpenVINO backend compared to other Keras backends. This report presents:
 
-1. **Problem identification**: OpenVINO consuming excessive memory during├── OpenVINO GPU (Fixed): 877 MB swap (⚠️ Memory pressure)model compilation
-2. **Solution implementation**: Constant sharing optimization in Einsum decomposition
+1. **Problem identification**: OpenVINO consuming excessive memory during model compilation
+2. **Solution implementation**: Einsumdecomposition after ConstantFolding in MOC transformation
 3. **Performance analysis**: Comprehensive benchmarking across all Keras backends
 4. **Results validation**: Memory reduction and performance improvements
 
@@ -14,8 +13,6 @@ During the Google Summer of Code 2025 project focused on enabling OpenVINO backe
 
 - **Pull Request**: [OpenVINO Constant Sharing Fix](https://github.com/openvinotoolkit/openvino/pull/31482)
 - **Issue Report**: [Memory Consumption Analysis](https://github.com/openvinotoolkit/openvino/issues/31390)
-- **Memory Reduction**: 7.5% decrease in compilation memory usage (154.6 MB → 143 MB)
-
 ---
 
 ## Methodology
@@ -25,14 +22,20 @@ During the Google Summer of Code 2025 project focused on enabling OpenVINO backe
 - **Task**: Text generation with 10-token output
 - **Metrics**: Memory consumption, inference latency, throughput
 - **Device Configurations**: CPU-only and GPU-accelerated testing
+- **GPU Hardware**:
+  - **OpenVINO**: Intel UHD Graphics (Raptor Lake-S, rev 04) - `00:02.0 VGA compatible controller`
+  - **Other Backends**: NVIDIA Tesla T4
 
 ### Performance Testing Code
 The comprehensive testing framework monitors memory usage throughout the model lifecycle:
 
 ```python
 import os
-backend = "tensorflow"  # Switch between: tensorflow, openvino, torch, jax
+backend = "openvino"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["KERAS_BACKEND"] = backend
+# os.environ["OV_ENABLE_MEMORY_PROFILING"] = "1"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -41,8 +44,14 @@ import gc
 import time
 import psutil
 import threading
-import keras
-import keras_hub
+
+try:
+    from tabulate import tabulate
+    TABULATE_AVAILABLE = True
+except ImportError:
+    TABULATE_AVAILABLE = False
+    print("⚠️  tabulate not available. Install with: pip install tabulate")
+
 
 def record_stage(stage_name, description=""):
     """Record stage with current memory consumption"""
@@ -54,8 +63,19 @@ def record_stage(stage_name, description=""):
     print(f"[STAGE] {stage_name}: {current_memory:.2f} MB (swap: {swap_memory:.2f} MB) - {description}")
     return current_memory, swap_memory
 
+
 def main():
-    # Device information printing for different backends
+    """Main test function"""
+
+    print("=" * 80)
+    print(f"FIXED MEMORY TEST: KERAS GPT2 + {backend.upper()}")
+    print("=" * 80)
+
+    # Now import keras and keras_hub
+    import keras
+    import keras_hub
+
+    # Print device information for different backends
     print(f"🎯 Backend: {keras.config.backend()}")
     
     if keras.config.backend() == "tensorflow":
@@ -63,17 +83,25 @@ def main():
         print(f"🎯 TensorFlow version: {tf.__version__}")
         print(f"🎯 Available devices: {[d.name for d in tf.config.list_logical_devices()]}")
         print(f"🎯 GPU available: {tf.config.list_physical_devices('GPU')}")
+        print(f"🎯 Current device strategy: {tf.distribute.get_strategy()}")
+    elif keras.config.backend() == "jax":
+        import jax
+        print(f"🎯 JAX devices: {jax.devices()}")
+        print(f"🎯 JAX default device: {jax.devices()[0]}")
     elif keras.config.backend() == "torch":
         import torch
         print(f"🎯 PyTorch CUDA available: {torch.cuda.is_available()}")
         if torch.cuda.is_available():
             print(f"🎯 PyTorch CUDA device: {torch.cuda.get_device_name()}")
+            print(f"🎯 PyTorch current device: {torch.cuda.current_device()}")
+        else:
+            print(f"🎯 PyTorch using CPU")
     elif keras.config.backend() == "openvino":
         import openvino as ov
         core = ov.Core()
         print(f"🎯 OpenVINO available devices: {core.available_devices}")
 
-    # Memory monitoring setup
+    # Global variables for memory monitoring
     process = psutil.Process(os.getpid())
     peak_memory = [0]
     peak_swap = [0]
@@ -91,72 +119,233 @@ def main():
                 peak_swap[0] = swap_now
             time.sleep(0.02)
 
-    # Stage-by-stage testing
+    # Stage 0: Initial state
     mem_initial, swap_initial = record_stage("0_INITIAL", "Initial state after imports")
-    
-    # Start background memory monitoring
+    peak_memory[0] = mem_initial
+    peak_swap[0] = swap_initial
+
+    # Start monitoring
     monitor_thread = threading.Thread(target=monitor_memory, daemon=True)
     monitor_thread.start()
 
-    # Model loading
+    # Stage 1: Model loading
     print("\n>>> Loading GPT2 model from preset...")
     start_load = time.perf_counter()
-    causal_lm = keras_hub.models.GPT2CausalLM.from_preset("gpt2_medium_en", dtype="float32")
-    end_load = time.perf_counter()
-    mem_after_load, swap_after_load = record_stage("1_MODEL_LOADED", 
-                                f"gpt2_medium_en model loaded ({end_load-start_load:.1f}s)")
 
-    # Inference testing
+    try:
+        causal_lm = keras_hub.models.GPT2CausalLM.from_preset("gpt2_medium_en", dtype="float32")
+        model_name = "gpt2_medium_en"
+
+        end_load = time.perf_counter()
+        mem_after_load, swap_after_load = record_stage("1_MODEL_LOADED", 
+                                    f"{model_name} model loaded ({end_load-start_load:.1f}s)")
+    except Exception as e:
+        print(f"❌ Model loading error: {e}")
+        return False
+
+    # Stage 2: Preparation for inference
     mem_before_inference, swap_before_inference = record_stage("2_BEFORE_INFERENCE", "Before first inference")
-    
+
+    # Stage 3: First inference
     print("\n>>> Running first inference (compilation + execution)...")
+    print(f"    ⏳ Converting Keras -> {backend.upper()} and compiling...")
+
     start_time = time.perf_counter()
-    output = causal_lm.generate("Hello", max_length=10)
-    end_time = time.perf_counter()
-    mem_after_inference, swap_after_inference = record_stage("3_FIRST_INFERENCE", 
-                                          f"First inference completed ({end_time-start_time:.1f}s)")
-    
-    print("\n>>> Second inference (no compilation)...")
-    start_time2 = time.perf_counter()
-    output2 = causal_lm.generate("Test", max_length=10)
-    end_time2 = time.perf_counter()
-    mem_after_second, swap_after_second = record_stage("4_SECOND_INFERENCE", 
-                                f"Second inference ({end_time2-start_time2:.1f}s)")
-    
-    # Stop monitoring and analyze results
+
+    try:
+        # Only test generate method - no fallback to backbone
+        output = causal_lm.generate("Hello", max_length=10)
+        generation_method = "generate"
+        inference_success = True
+        end_time = time.perf_counter()
+        if generation_method == "compile_only" and not inference_success:
+            mem_after_inference, swap_after_inference = record_stage("3_FIRST_INFERENCE", 
+                                              f"First inference failed via compile_only ({end_time-start_time:.1f}s)")
+        else:
+            mem_after_inference, swap_after_inference = record_stage("3_FIRST_INFERENCE", 
+                                              f"First inference completed via {generation_method} ({end_time-start_time:.1f}s)")
+        
+        # Stage 4: Second inference
+        print("\n>>> Second inference (no compilation)...")
+        start_time2 = time.perf_counter()
+        try:
+            if generation_method == "generate":
+                output2 = causal_lm.generate("Test", max_length=10)
+            else:
+                output2 = "Second inference not available (generate method not used)"
+        except:
+            output2 = f"Second {generation_method} inference"
+        end_time2 = time.perf_counter()
+        mem_after_second, swap_after_second = record_stage("4_SECOND_INFERENCE", 
+                                    f"Second inference ({end_time2-start_time2:.1f}s)")
+        
+    except Exception as e:
+        print(f"❌ All inference methods failed: {e}")
+        import traceback
+        print(f"Error details: {traceback.format_exc()}")
+        mem_after_inference, swap_after_inference = record_stage("3_INFERENCE_FAILED", f"All inference failed: {str(e)[:50]}...")
+        mem_after_second, swap_after_second = mem_after_inference, swap_after_inference
+        output = "FAILED"
+        output2 = "FAILED"
+        inference_success = False
+        end_time = start_time
+        end_time2 = start_time
+
+    # Stop monitoring
     done[0] = True
     monitor_thread.join(timeout=1.0)
+
+    # Final stage
     mem_final, swap_final = record_stage("5_FINAL", "Final state")
-    
-    # Performance metrics calculation
-    latency = end_time - start_time
-    latency2 = end_time2 - start_time2
-    tokens_generated = len(output.split())
-    throughput = tokens_generated / latency if latency > 0 else 0
-    
+
+    # Results analysis
+    print("\n" + "=" * 80)
+    print("PERFORMANCE RESULTS")
+    print("=" * 80)
+
+    if inference_success:
+        latency = end_time - start_time
+        latency2 = end_time2 - start_time2
+        tokens_generated = len(output.split()) if output != "FAILED" else 0
+        throughput = tokens_generated / latency if latency > 0 else 0
+        
+        print(f"✅ Generated text: '{output}'")
+        print(f"✅ Second generation: '{output2}'")
+        print(f"Backend: {keras.backend.backend()}")
+        print(f"First inference latency: {latency:.2f}s")
+        print(f"Second inference latency: {latency2:.3f}s") 
+        print(f"Throughput: {throughput:.2f} tokens/sec")
+        print(f"Speedup: {latency/latency2:.1f}x" if latency2 > 0 else "Speedup: N/A")
+    else:
+        print("❌ Inference failed")
+
     # Memory analysis
     model_loading = mem_after_load - mem_initial
-    compilation = mem_after_inference - mem_before_inference
+    compilation = mem_after_inference - mem_before_inference if inference_success else 0
     total_usage = mem_final - mem_initial
     peak_usage = peak_memory[0] - mem_initial
+
+    # Calculate swap changes
+    swap_model_loading = swap_after_load - swap_initial
+    swap_compilation = swap_after_inference - swap_before_inference if inference_success else 0
+    swap_total = swap_final - swap_initial
+    peak_swap_usage = peak_swap[0] - swap_initial
+
+    print(f"\n📊 DETAILED MEMORY ANALYSIS:")
     
+    if TABULATE_AVAILABLE:
+        # Create table data
+        table_data = []
+        
+        # Initial row
+        table_data.append(["Initial", f"{mem_initial:.1f}", f"{swap_initial:.1f}", "-", "-"])
+        
+        # After model load
+        table_data.append(["After model load", f"{mem_after_load:.1f}", f"{swap_after_load:.1f}", 
+                          f"{model_loading:+.1f}", f"{swap_model_loading:+.1f}"])
+        
+        # Before inference
+        table_data.append(["Before inference", f"{mem_before_inference:.1f}", f"{swap_before_inference:.1f}", 
+                          f"{mem_before_inference-mem_after_load:+.1f}", f"{swap_before_inference-swap_after_load:+.1f}"])
+        
+        if inference_success:
+            # After 1st inference
+            table_data.append(["After 1st inference", f"{mem_after_inference:.1f}", f"{swap_after_inference:.1f}", 
+                              f"{compilation:+.1f}", f"{swap_compilation:+.1f}"])
+            
+            # After 2nd inference
+            table_data.append(["After 2nd inference", f"{mem_after_second:.1f}", f"{swap_after_second:.1f}", 
+                              f"{mem_after_second-mem_after_inference:+.1f}", f"{swap_after_second-swap_after_inference:+.1f}"])
+            
+            # Final
+            table_data.append(["Final", f"{mem_final:.1f}", f"{swap_final:.1f}", 
+                              f"{mem_final-mem_after_second:+.1f}", f"{swap_final-swap_after_second:+.1f}"])
+        else:
+            # After failure
+            table_data.append(["After failure", f"{mem_after_inference:.1f}", f"{swap_after_inference:.1f}", 
+                              f"{compilation:+.1f}", f"{swap_compilation:+.1f}"])
+            
+            # Final
+            table_data.append(["Final", f"{mem_final:.1f}", f"{swap_final:.1f}", 
+                              f"{mem_final-mem_after_inference:+.1f}", f"{swap_final-swap_after_inference:+.1f}"])
+        
+        # Peak recorded
+        table_data.append(["Peak recorded", f"{peak_memory[0]:.1f}", f"{peak_swap[0]:.1f}", f"{peak_usage:+.1f}", f"{peak_swap_usage:+.1f}"])
+        
+        # Headers
+        headers = ["STAGE", "RAM (MB)", "SWAP (MB)", "RAM CHANGE", "SWAP CHANGE"]
+        
+        # Print beautiful table
+        print(tabulate(table_data, headers=headers, tablefmt="grid", stralign="left", numalign="right"))
+        
+    else:
+        # Fallback to manual formatting if tabulate not available
+        print(f"{'='*85}")
+        print(f"{'STAGE':<25} {'RAM (MB)':<12} {'SWAP (MB)':<12} {'RAM CHANGE':<12} {'SWAP CHANGE':<12}")
+        print(f"{'-'*85}")
+        print(f"{'Initial':<25} {mem_initial:<12.1f} {swap_initial:<12.1f} {'-':<12} {'-':<12}")
+        print(f"{'After model load':<25} {mem_after_load:<12.1f} {swap_after_load:<12.1f} {model_loading:+12.1f} {swap_model_loading:+12.1f}")
+        print(f"{'Before inference':<25} {mem_before_inference:<12.1f} {swap_before_inference:<12.1f} {mem_before_inference-mem_after_load:+12.1f} {swap_before_inference-swap_after_load:+12.1f}")
+
+        if inference_success:
+            print(f"{'After 1st inference':<25} {mem_after_inference:<12.1f} {swap_after_inference:<12.1f} {compilation:+12.1f} {swap_compilation:+12.1f}")
+            print(f"{'After 2nd inference':<25} {mem_after_second:<12.1f} {swap_after_second:<12.1f} {mem_after_second-mem_after_inference:+12.1f} {swap_after_second-swap_after_inference:+12.1f}")
+        else:
+            print(f"{'After failure':<25} {mem_after_inference:<12.1f} {swap_after_inference:<12.1f} {compilation:+12.1f} {swap_compilation:+12.1f}")
+
+        print(f"{'Final':<25} {mem_final:<12.1f} {swap_final:<12.1f} {mem_final-mem_after_second if inference_success else mem_final-mem_after_inference:+12.1f} {swap_final-(swap_after_second if inference_success else swap_after_inference):+12.1f}")
+        print(f"{'Peak recorded':<25} {peak_memory[0]:<12.1f} {peak_swap[0]:<12.1f} {peak_usage:+12.1f} {peak_swap_usage:+12.1f}")
+        print(f"{'-'*85}")
+
+    print(f"\n🔍 MAIN MEMORY CONSUMERS:")
+    print(f"   📚 Model loading:        {model_loading:+8.1f} MB RAM  {swap_model_loading:+8.1f} MB swap  ({model_loading/total_usage*100 if total_usage != 0 else 0:.1f}% of total)")
+    if inference_success and compilation != 0:
+        print(f"   ⚡ Compilation/inference: {compilation:+8.1f} MB RAM  {swap_compilation:+8.1f} MB swap  ({compilation/total_usage*100 if total_usage != 0 else 0:.1f}% of total)")
+
+    print(f"\n📈 SUMMARY:")
+    print(f"   💾 Total RAM growth:     {total_usage:+8.1f} MB")
+    print(f"   💿 Total swap change:    {swap_total:+8.1f} MB")
+    print(f"   📊 Peak RAM consumption: {peak_usage:+8.1f} MB above initial")
+    print(f"   🔥 Highest RAM recorded: {peak_memory[0]:.1f} MB")
+    print(f"   💿 Peak swap consumption: {peak_swap_usage:+8.1f} MB above initial")
+    print(f"   🔥 Highest swap recorded: {peak_swap[0]:.1f} MB")
+
+    # Enhanced status assessment
+    total_memory_impact = peak_memory[0] + peak_swap[0]
+    print(f"\n🎯 MEMORY HEALTH CHECK:")
+    if peak_usage > 2000:
+        print(f"   ❌ CRITICAL: RAM usage {peak_usage:.0f} MB is very high (target <1GB)")
+    elif peak_usage > 1000:
+        print(f"   ⚠️  WARNING: RAM usage {peak_usage:.0f} MB is quite high")
+    else:
+        print(f"   ✅ GOOD: RAM usage {peak_usage:.0f} MB is reasonable")
+    
+    if peak_swap[0] > 1000:
+        print(f"   ⚠️  WARNING: Peak swap usage {peak_swap[0]:.0f} MB indicates memory pressure")
+    elif peak_swap[0] > 100:
+        print(f"   ℹ️  INFO: Moderate peak swap usage {peak_swap[0]:.0f} MB")
+    else:
+        print(f"   ✅ GOOD: Low peak swap usage {peak_swap[0]:.0f} MB")
+
+    if total_memory_impact > 4000:
+        print(f"   🚨 ALERT: Combined memory impact {total_memory_impact:.0f} MB is very high")
+
     return {
-        'backend': keras.backend.backend(),
-        'latency_first': latency,
-        'latency_second': latency2,
-        'throughput': throughput,
-        'speedup': latency/latency2 if latency2 > 0 else 0,
+        'success': inference_success,
         'model_loading_mb': model_loading,
         'compilation_mb': compilation,
         'total_mb': total_usage,
         'peak_mb': peak_usage,
-        'generated_text': output,
-        'generated_text_2': output2
+        'peak_swap_mb': peak_swap_usage
     }
 
-if __name__ == "__main__":
+try:
     results = main()
     print(f"\n🎯 Test completed: {results}")
+except Exception as e:
+    print(f"\n❌ Critical error: {e}")
+    import traceback
+    print(traceback.format_exc())
 ```
 
 ---
@@ -187,7 +376,7 @@ High-Memory Environments (>8GB RAM):
 #### Memory Optimization Strategies
 
 ```
-Constant Sharing Impact Assessment:
+EinsumDecomposition after ConstantFolding in MOC Impact Assessment:
 ├── EinsumDecomposition Fix: 7.5% memory reduction in compilation
 ├── Python-level Sharing: 31% reduction in constant count
 ├── Graph Optimization: Automatic node reuse and deduplication
@@ -399,8 +588,8 @@ By Memory Growth Rate:
 4. 🔴 PyTorch CPU:      1,457 MB growth (1.47x initial)
 5. 🔴 TensorFlow CPU:   1,951 MB growth (2.53x initial)
 6. 🔴 JAX CPU:          1,729 MB growth (2.22x initial)
-7. 🔴 OpenVINO CPU:     3,296 MB growth (4.21x initial)
-8. 🔴 OpenVINO GPU:     1,506 MB growth (1.63x initial)
+7. 🔴 OpenVINO GPU:     1,506 MB growth (1.63x initial)
+8. 🔴 OpenVINO CPU:     3,296 MB growth (4.21x initial)
 ```
 
 #### Compilation Memory Overhead Analysis
@@ -499,7 +688,7 @@ Fix Effectiveness:
 
 ### Optimization Details
 
-The constant sharing optimization specifically targets **Einsum operations in transformer models** where at least one input is a constant tensor. After ConstantFolding, weight matrices become constants enabling more efficient decomposition patterns.
+The EinsumDecomposition after ConstnatFolding in MOC optimization specifically targets **Einsum operations in transformer models** where at least one input is a constant tensor. After ConstantFolding, weight matrices become constants enabling more efficient decomposition patterns.
 
 #### Specific Einsum Operations Optimized:
 
@@ -520,9 +709,6 @@ The constant sharing optimization specifically targets **Einsum operations in tr
    - Pattern: `einsum("acbe,aecd->abcd", attention_scores, value)`
    - Code: `attention_output = ops.einsum(self._combine_equation, final_attn_scores, value)`
    - **Status**: ❌ **No Optimization** (both inputs are variable tensors)
-
-**Implementation Details**: The optimization creates a shared constant cache at the class level, reducing redundant constant tensor allocation during model compilation.
-
 ---
 
 ## Conclusions and Recommendations
@@ -537,19 +723,6 @@ The constant sharing optimization specifically targets **Einsum operations in tr
 1. **OpenVINO GPU Memory**: Paradoxical increase in GPU memory usage with the fix
 2. **Cross-Backend Inconsistency**: OpenVINO still consumes 2-3x more memory than other backends
 3. **Compilation Overhead**: OpenVINO compilation phase uses disproportionate memory
-
-### 🎯 Recommendations
-1. **Production Deployment**: 
-   - **TensorFlow GPU**: Recommended for production with best performance/memory ratio
-   - **PyTorch**: Good alternative with consistent CPU/GPU performance
-   - **OpenVINO**: Consider for edge deployment after further memory optimizations
-
-2. **Future Optimization Priorities**:
-   - Investigate OpenVINO GPU memory allocation patterns
-   - Extend constant sharing to more operation types beyond Einsum
-   - Implement memory-aware compilation strategies
-
-3. **Monitoring**: Implement continuous memory profiling in CI/CD pipelines to prevent regression
 
 ### 📊 Impact Summary
 - **Memory Saved**: 1,060 MB (24.2% reduction) in OpenVINO compilation
