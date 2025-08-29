@@ -1865,7 +1865,7 @@ keras_hub/src/utils/transformers/export/gemma_test.py::TestGemmaExport::test_ses
 =============================== warnings summary ===============================
 ../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
 ../../../../../usr/lib/python3.12/multiprocessing/popen_fork.py:66
-  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=19795) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  /usr/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=760228) is multi-threaded, use of fork() may lead to deadlocks in the child.
     self.pid = os.fork()
 
 ../openvino/build_python3.12/site-packages/python/openvino/runtime/__init__.py:10
@@ -1946,4 +1946,4 @@ keras_hub/src/utils/preset_utils_test.py::PresetUtilsTest::test_session
     return self.run(*args, **kwds)
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-========== 311 passed, 1544 skipped, 21 warnings in 95.06s (0:01:35) ===========
+=============== 311 passed, 1544 skipped, 21 warnings in 55.78s ================
